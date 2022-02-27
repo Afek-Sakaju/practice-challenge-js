@@ -4,6 +4,8 @@ function makeAdder(x){
 }
 var add88 = makeAdder(88);
 var add5 = makeAdder(5);
-console.log("good morning");
+var add10 = makeAdder(10);
+
 console.log("good night");
 console.log(add5(2));
+console.log(add10(21));
