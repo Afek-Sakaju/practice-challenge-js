@@ -2,6 +2,6 @@
 
 module.exports.isOnlyDigit = function(str){
     return typeof str === 'string'
-        if(!isNaN(+(str)) && typeof +(str) === 'number')
+        if(!isNaN(+(str)) && typeof +(str) === 'number') return true;
         else return false;
 }
