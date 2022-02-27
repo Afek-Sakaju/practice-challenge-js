@@ -1,4 +1,4 @@
-let x = 100;
+
 function makeAdder(x){
     function z(y){
         return x + y;
@@ -11,4 +11,3 @@ var add10 = makeAdder(10);
 
 console.log(add5(2));
 console.log(add10(2));
-console.log(x);
