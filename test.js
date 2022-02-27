@@ -1,8 +1,5 @@
-
 function makeAdder(x){
-    function z(y){
-        return x + y;
-    }
+    function z(y){ return x + y; }
     return z;
 }
 
