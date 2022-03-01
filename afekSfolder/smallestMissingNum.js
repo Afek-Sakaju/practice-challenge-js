@@ -10,14 +10,12 @@ module.exports.smallestMissingNum = function(arr){
   //You are given an array arr[] of N integers including 0.
   // The task is to find the smallest positive number missing from the array.
   
-  let missingNum;
-
-  for(number of arr){
-    let currentNumber = number;
-
-    if(currentNumber > 0){
-      
-    }
+  const MissingPossibilites = {};
+  length = arr.length;
+  for(let i = 0, i < length; i++){
+    MissingPossibilites.arr[i] = 0;
   }
+
+  console.log(MissingPossibilites);
 }
 console.log(this.smallestMissingNum([-8,-10,-5]));
