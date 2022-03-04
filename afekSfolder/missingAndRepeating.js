@@ -12,6 +12,12 @@ function missingAndRepeating(arr1, size){
   const object = {};
   const resultArray = [];
 
+  if(!size){
+    resultArray.push("no repeating num");
+    resultArray.push(1);
+    return resultArray;
+  }
+
   for(let i = 0; i < size; i++){
     const nextNum = arr1[i + 1];
     const expectedNextNum = arr1[i] + 1;
@@ -24,7 +30,7 @@ function missingAndRepeating(arr1, size){
       }
       else resultArray[1] = 1;
     }
-    
+
     if(!object.hasOwnProperty(arr1[i])){
       object[arr1[i]] = false;
     }

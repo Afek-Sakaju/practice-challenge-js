@@ -14,3 +14,8 @@ test('find missing number and repeating number from array of two duplicated nums
   
   expect(missingAndRepeating([2,2],2)).toEqual([2, 1]);
 })
+
+test('if array empty return string insted of repeating number', () =>{
+  
+  expect(missingAndRepeating([],0)).toEqual(["no repeating num", 1]);
+})
