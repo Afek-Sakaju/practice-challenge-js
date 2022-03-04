@@ -1,6 +1,4 @@
 const missingAndRepeating = require('./missingAndRepeating');
-const bubbleSort = require('./bubbleSort');
-
 
 test('find one missing number and one number that occurs twice', () =>{
   const arr = [1,3,3];
