@@ -9,3 +9,8 @@ test('find one missing number and one number that occurs twice', () =>{
 
   expect(missingAndRepeating(arr, size)).toEqual(result);
 })
+
+test('find missing number and repeating number from array of two duplicated nums', () =>{
+  
+  expect(missingAndRepeating([2,2],2)).toEqual([2, 1]);
+})

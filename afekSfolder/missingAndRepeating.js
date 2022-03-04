@@ -16,8 +16,13 @@ function missingAndRepeating(arr1, size){
     const nextNum = arr1[i + 1];
     const expectedNextNum = arr1[i] + 1;
 
-    if(!(nextNum === expectedNextNum) && (!resultArray[1])){
-      resultArray[1] = expectedNextNum; 
+    if(!resultArray[1]){
+      if((arr1[0] === 1)){
+        if(!(nextNum === expectedNextNum)){
+          resultArray[1] = expectedNextNum; 
+        }
+      }
+      else resultArray[1] = 1;
     }
     
     if(!object.hasOwnProperty(arr1[i])){
