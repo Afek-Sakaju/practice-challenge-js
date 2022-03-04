@@ -8,9 +8,6 @@
  *  and second number that is missing
  */
 
-
-//ive written it this way to practice that way of exporting function
-
 function missingAndRepeating(arr1, size){
   const object = {};
   const resultArray = [];
@@ -32,5 +29,3 @@ function missingAndRepeating(arr1, size){
   return resultArray;
 }
 module.exports = missingAndRepeating;
-
-//console.log(module.exports.missingAndRepeating([1,3,3],3));
