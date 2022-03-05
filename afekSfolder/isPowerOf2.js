@@ -8,8 +8,18 @@
  *  result of 2 powered by some number
  */
 function isPowerOf2(num1){
-  const num = 
+  let power = 0;
+  let result = false;
+  const currentPowerResult = Math.pow(2, power);
 
+  while(currentPowerResult <= num1){
+    if (currentPowerResult === num1){
+      result = true;
+      return result;
+    }
+    else power++;
+  }
+  return result;
  }
 
  module.exports = isPowerOf2;
