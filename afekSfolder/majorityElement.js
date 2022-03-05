@@ -12,8 +12,6 @@
 module.exports.majorityElement = function(arr1, length){
   const countingObj = {};
   let majorNum = -1;
-
-  
   let minimumCounts = Math.ceil(length/2);
 
   for(const num of arr1){
@@ -23,7 +21,6 @@ module.exports.majorityElement = function(arr1, length){
     countingObj[num]++;
   }
   
-
   for(const [key, value] of Object.entries(countingObj)){
 
     if(value >= minimumCounts) majorNum = +key
