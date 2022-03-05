@@ -22,6 +22,7 @@ module.exports.majorityElement = function(arr1, length){
 
     countingObj[num]++;
   }
+  
 
   for(const [key, value] of Object.entries(countingObj)){
 
