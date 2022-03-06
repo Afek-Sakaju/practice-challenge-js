@@ -15,7 +15,7 @@ function isPowerOf2(givenNum){
   while(currentPowerResult <= givenNum){
     currentPowerResult = Math.pow(2, power);
     
-    if (currentPowerResult === givenNum){
+    if(currentPowerResult === givenNum){
       result = true;
       return result;
     }
@@ -24,6 +24,4 @@ function isPowerOf2(givenNum){
   return result;
  }
 
- isPowerOf2(98);
  module.exports = isPowerOf2;
-  console.log(`currentPower in loop: ${currentPowerResult}`);
