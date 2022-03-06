@@ -9,22 +9,23 @@
  * @returns {number} majorNum is the majority element in the array
  */
 
-module.exports.majorityElement = function(arr1, length){
+module.exports.majorityElement = function(arr1, length) {
   const countingObj = {};
   let majorNum = -1;
   let minimumCounts = Math.ceil(length/2);
 
-  for(const num of arr1){
+  for(const num of arr1) {
 
-    if(!Object.hasOwn(countingObj, num)) countingObj[num] = 0;
-
+    if(!Object.hasOwn(countingObj, num)) {
+      countingObj[num] = 0;
+    }
     countingObj[num]++;
   }
   
-  for(const [key, value] of Object.entries(countingObj)){
-
-    if(value >= minimumCounts) majorNum = +key
+  for(const [key, value] of Object.entries(countingObj)) {
+    if(value >= minimumCounts) {
+      majorNum = +key
+    }
   }
-
   return majorNum;
 }
