@@ -1,0 +1,2 @@
+const {stringPremutation} = require('../stringPremutation');
+
