@@ -12,9 +12,9 @@
  * @returns {Array} arr2 that will contain the sorted size2 elements
  */
 
-function mergeArrays(arr1, arr2,) {
+function mergeArrays(arr1, arr2) {
   let max1 = Math.max(...arr1);
-  let min2 = Math.min(arr2);
+  let min2 = Math.min(...arr2);
   let i = 0;
 
   while(min2 < max1){
@@ -33,6 +33,6 @@ function mergeArrays(arr1, arr2,) {
   return [arr1,arr2];
 }
 
-console.log(mergeArrays([1,3,5,7],4,[0,2,6,8,9],5));
+console.log(mergeArrays([1,3,5,7],[0,2,6,8,9]));
 module.exports = mergeArrays;
 
