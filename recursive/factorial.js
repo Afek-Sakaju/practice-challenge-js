@@ -1,47 +1,47 @@
-function factorial(N){
-    if(!N) {
-        return 1;
-    }
+function* fib() {
+    var current = a = b = 1;
 
-    return N * factorial(N - 1);
-}
+    yield 1;
 
-// console.log(factorial(6)) // 6! = 6*5*4*3*2*1 =  720
+    while (true) {
+        current = b;
 
-const node = {
-    value: 5,
-    left: {
-        value: 2,
-        left: {
-            value: 1,
-            left: null,
-            right: null,
-        },
-        right: null,
-    },
-    right: {
-        value: 8,
-        left: null,
-        right: null,
+        yield current;
+
+        b = a + b;
+        a = current;
     }
 }
 
-function travel(node) {
-    if(node === null) return;
+sequence = fib();
+let res;
+res = sequence.next(); //  1.  1
+console.log(res);
+res = sequence.next(); //  2.  1
+console.log(res);
+res = sequence.next(); //  3.  2
+console.log(res);
+res = sequence.next(); //  4.  3
+console.log(res);
+res = sequence.next(); //  5.  5
+console.log(res);
+res = sequence.next(); //  6.  8
+console.log(res);
+res = sequence.next(); //  7. 13
+console.log(res);
+res = sequence.next(); //  8. 21
+console.log(res);
+res = sequence.next(); //  9. 34
+console.log(res);
+res = sequence.next(); // 10. 55
+console.log(res);
 
-    const stack = [];
-    stack.push(node.right);
-    stack.push(node.left);
-    console.log(node.value);
 
-    while(stack.length) {
-        const node1 = stack.pop();
-        if(node1 === null) continue;
-
-        console.log(node1.value);
-        stack.push(node1.right);
-        stack.push(node1.left);
+{
+    function fibRec(n) {
+        if (n <= 1) return n;
+        return fibRec(n - 1) + fibRec(n - 2);
     }
-}
 
-console.log(travel(node));
+    // console.log(fibRec(10)); // returns 55
+}
