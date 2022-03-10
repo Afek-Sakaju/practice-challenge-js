@@ -16,7 +16,7 @@ function allPositive(arr1){
     }
 
     if(!i) {
-      return true;
+      return true; 
     }
     else{
       positivity(arr1[i--]);
