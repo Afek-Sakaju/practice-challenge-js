@@ -6,21 +6,25 @@
  * @return {Number} returns 1 if all the array numbers
  * are positive, else returns 0
  */
+
 function allPositive(arr1){
-  let i = arr1.length - 1;
-  return positivity(arr1[i]);
+  let i = 0;
 
-  function positivity(currentNum){
-    if(currentNum <= 0){
-      return false;
+  function positivity(currentNum) {
+    if(i === arr1.length) {
+      return 1; 
     }
-
-    if(!i) {
-      return true; 
+    else if(currentNum < 0) {
+      return 0;
     }
-    else{
-      positivity(arr1[i--]);
+    else {
+      i++;
+      currentNum = arr1[i];
+      return positivity(currentNum);
     } 
   }
+
+  return positivity(arr1[i]);
 }
-console.log(allPositive([1,2,76,4]));
+
+module.exports = allPositive;
