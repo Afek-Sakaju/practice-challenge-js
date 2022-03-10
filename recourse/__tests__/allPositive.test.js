@@ -1,11 +1,11 @@
-const allPositive = require('../allPositive');
+const allPositiveCheck = require('../allPositive');
 
 describe("returns input 1 if all numbers are positive, or 0 if all numbers are negative", () => {
   it('returns 1 if all numbers are positive', () => {
-    expect(allPositive([1,2,4,6,8])).toBe(1);
+    expect(allPositiveCheck([1,2,4,6,8])).toBe(1);
   })
 
   it('return 0 if all numbers are negative', () => {
-    expect(allPositive([2,-6,1,8])).toBe(0);
+    expect(allPositiveCheck([2,-6,1,8])).toBe(0);
   })
 });
