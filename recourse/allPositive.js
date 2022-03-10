@@ -7,5 +7,20 @@
  * are positive, else returns 0
  */
 function allPositive(arr1){
-  
+  let i = arr1.length - 1;
+  return positivity(arr1[i]);
+
+  function positivity(currentNum){
+    if(currentNum <= 0){
+      return false;
+    }
+
+    if(!i) {
+      return true;
+    }
+    else{
+      positivity(arr1[i--]);
+    } 
+  }
 }
+console.log(allPositive([1,2,76,4]));
