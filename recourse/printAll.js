@@ -5,14 +5,14 @@
  */
 
 function printAll(arr1){
-  let i = 0;
+  let i = arr1.length - 1;
   
   function consolePrint(i){
-    if(arr1.length <= i) return;
+    if(i < 0) return;
 
     let currentNum = arr1[i];
     console.log(currentNum);
-    return consolePrint(i + 1);
+    return consolePrint(i - 1);
   }
   consolePrint(i);   
 }
