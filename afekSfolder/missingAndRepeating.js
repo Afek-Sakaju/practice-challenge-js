@@ -2,41 +2,54 @@
  * function gets unsorted array of positive numbers
  * that finds one missing number and one number that occurs twice
  * 
- * @param {array} arr1 is unsorted array of positive numbers
- * @param {number} size of the array
+ * @param {array} numbers is unsorted array of positive numbers
  * @returns {array} resultArray that contains first number that is repeating twice
  *  and second number that is missing
  */
 
-function missingAndRepeating(arr1, size){
-  const object = {};
-  const resultArray = [];
+function missingAndRepeating(numbers){ // O(N)
+  let twice, missing;
+  const visited = Array(numbers.length).fill(false);
 
-  if(!size){
-    resultArray.push("no repeating num");
-    resultArray.push(1);
-    return resultArray;
+  for(const n of numbers) { // O(N)
+    const i = n - 1;
+    if(visited[i]) twice = n;
+    visited[i] = true;
   }
 
-  for(let i = 0; i < size; i++){
-    const nextNum = arr1[i + 1];
-    const expectedNextNum = arr1[i] + 1;
+  const missingIndex = visited.findIndex(bit => !bit); // O(N)
+  missing = missingIndex + 1;
 
-    if(!resultArray[1]){
-      if((arr1[0] === 1)){
-        if(!(nextNum === expectedNextNum)){
-          resultArray[1] = expectedNextNum; 
-        }
-      }
-      else resultArray[1] = 1;
-    }
-
-    if(!object.hasOwnProperty(arr1[i])){
-      object[arr1[i]] = false;
-    }
-    else resultArray[0] = arr1[i];
-  }
-  
-  return resultArray;
+  return [twice, missing];
 }
 module.exports = missingAndRepeating;
+
+function missingAndRepeatingOptimal(numbers){ // O(N)
+  let twice, missing;
+  let counter = numbers.length;
+  let i = 0;
+
+  while (counter--) {
+    const n = numbers[i];
+    const j = n - 1;
+
+    if(i !== j) {
+
+      if(numbers[i] === numbers[j]){
+        twice = numbers[i];
+        missing = i + 1;
+        break;
+      }
+
+      let t = numbers[i];
+      numbers[i] = numbers[j];
+      numbers[j] = t;
+    }
+    else {
+      i++;
+    }
+  }
+
+  return [twice, missing];
+}
+module.exports.missingAndRepeatingOptimal = missingAndRepeatingOptimal;
