@@ -1,8 +1,18 @@
-/*
-you get number of total persons totalPersons
-and killNumber which indicated that this number -1 persons are skipped and the person
-on the killNumber is killed in circle in a fixed direction.
-The task is to choose the safe place in the circle,
-so when you perform the operations starting from 1st place in 
-the circle, you are the last one remaining and survive.
-*/
+/**
+ * function get number of total persons totalPersons
+ * and killNumber indicates the person that is going
+ * to get killed in the circle in a fixed direction.
+ * than returns the safe place in the circle to survive.
+ * 
+ * @param {Number} totalPersons number of the amount persons in the case.
+ * @param {Number} killNumber number that indicates the person
+ * that is going to get killed in the circle in a fixed direction.
+ * @returns {Number} safePlace is the number that indicated which place
+ * in the circle of persons is the safe to survive.
+ */
+
+function josephusProblem(totalPersons, killNumber){
+  
+
+}
+module.exports = josephusProblem;
