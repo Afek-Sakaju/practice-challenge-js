@@ -12,7 +12,24 @@
  */
 
 function josephusProblem(totalPersons, killNumber){
-  
+  if(killNumber >= totalPersons){
 
+    killNumber = killNumber % totalPersons;
+  }
+  let currentPerson = 1;
+  
+  function rollTheGun(currentPerson){
+    
+    if(currentPerson = killNumber){
+      if(currentPerson === totalPersons){
+        return 1;
+        /* because at any time the kill number is the last person,
+        the one to survive will be the first one. */
+      }
+      return currentPerson + 1;
+    }
+    return rollTheGun(currentPerson + 1);
+  }
+  return rollTheGun(currentPerson);
 }
 module.exports = josephusProblem;
