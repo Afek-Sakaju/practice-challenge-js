@@ -10,6 +10,16 @@
  */
 
 function shuffleName(fullName){
-  
+  for(let i = 0; i < fullName.length; i++){
+    if (fullName[i] === ' '){
+      let str2 = fullName.slice(i + 1);
+      let str1 = fullName.slice(0,i);
+      fullName = str2 + ' ' + str1;
+      break;
+    }
+  }
+  return fullName;
 }
+
+console.log(shuffleName('hello friend'));
 module.exports = shuffleName;
