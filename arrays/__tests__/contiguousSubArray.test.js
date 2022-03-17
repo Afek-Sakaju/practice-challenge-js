@@ -14,7 +14,7 @@ describe('return max sum from all sub-arrays', () => {
   })
 
   test('classic case of expected max sum to be returned', () => {
-    const contiguousFunction = contiguousSubArray([1,2,-4,1]);
+    const contiguousFunction = contiguousSubArray([1,2,-6,1,8]);
     const result = 3;
     expect(contiguousFunction).toBe(result);
   })

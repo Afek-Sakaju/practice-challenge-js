@@ -9,15 +9,15 @@
  */
 
 function contiguousSubArray(arr1){
-  let maxSum;
-  const arr2 = [];
-  for(let i = 0, j = i + 1; i < arr1.length; i++){
-    
-    if(sum1 > sum2){
-      maxSum = sum1;
-    }
-    
-  }
+  let maxSum = -1000000;
+  let currentSum = 0;
 
+  for(let i = 0; i < arr1.length; i++){
+    currentSum += arr1[i];
+    if(currentSum > maxSum) maxSum = currentSum;
+    if(currentSum < 0) currentSum = 0;
+  }
+  return maxSum;
 }
 module.exports = contiguousSubArray;
+
