@@ -1,6 +1,3 @@
-/*
-* 4/ get two nums and print the smallest num that is splitting by the two , 
-* example: for 9 and 6 we get 18 . */
 /**
  * the funtion "biggestFromRandom" roll 3 random numbers between 0-100 and print the numbers
  * than returns who is the biggest from all the 3
@@ -47,7 +44,7 @@ function randomNumDigitsSum(){
  */
 function biggestDivideNum(num1, num2){
   if(!num1 || !num2) return 0;
-  
+
   let dividingNum = Math.max(num1, num2);
   do{
     let result1 = num1 % dividingNum;
@@ -59,3 +56,29 @@ function biggestDivideNum(num1, num2){
   }while(dividingNum--)
 }
 module.exports = biggestDivideNum;
+
+/**
+ * function "smallestDividedNum" gets two numbers and returns the smallest
+ * possible number that is divided by both given numbers
+ * 
+ * @param {Number} num1 is number given to the function 
+ * @param {Number} num2 is number given to the function
+ * @returns {Number} smallest possible number that is divided 
+ * by num1 and num2
+ */
+function smallestDividedNum(num1, num2){
+  if(num1 < 1 || num2 < 1) return 'please enter positive numbers';
+  let smallDivided = Math.max(num1, num2);
+  
+  for(let i = 1; i < 10; i++){
+    smallDivided *= i;
+    let result1 = smallDivided % num1;
+    let result2 = smallDivided % num2;
+
+    if(!(result1) && (!result2)){
+      return smallDivided;
+    }
+  }
+  return "not found";
+}
+module.exports = smallestDividedNum;
