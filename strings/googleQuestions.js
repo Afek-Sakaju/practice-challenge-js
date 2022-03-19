@@ -35,7 +35,7 @@ function randomNumDigitsSum(){
 
 /**
  * function "biggestDivideNum" gets two numbers and returns a number
- * that is the biggest possible number to divide them both
+ * that is the biggest possible number to divide by them both
  * 
  * @param {Number} num1 is number given to the function 
  * @param {Number} num2 is number given to the function
