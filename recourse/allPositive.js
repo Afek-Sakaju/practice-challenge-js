@@ -11,13 +11,8 @@ function allPositiveCheck(arr1){
   let i = 0;
 
   function positivityTest(currentNum) {
-    if(i === arr1.length) {
-      console.log('print ',currentNum);
-      return 1;
-    }
-    else if(currentNum < 0) {
-      return 0;
-    }
+    if(i === arr1.length) return 1;
+    else if(currentNum < 0) return 0;
     else {
       i++;
       currentNum = arr1[i];
