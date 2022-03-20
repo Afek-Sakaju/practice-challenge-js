@@ -11,12 +11,8 @@ function allPositiveCheck(arr1){
   let i = 0;
 
   function positivityTest(currentNum) {
-    if(i === arr1.length) {
-      return 1; 
-    }
-    else if(currentNum < 0) {
-      return 0;
-    }
+    if(i === arr1.length) return 1; 
+    else if(currentNum < 0) return 0;
     else {
       i++;
       currentNum = arr1[i];
@@ -26,5 +22,6 @@ function allPositiveCheck(arr1){
 
   return positivityTest(arr1[i]);
 }
+
 
 module.exports = allPositiveCheck;
