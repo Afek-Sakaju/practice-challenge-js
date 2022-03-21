@@ -10,18 +10,15 @@
 function isPowerOf2(givenNum){
   let power = 0;
   let currentPowerResult = 1;// 2^0 equal 1
-  let result = false;
 
   while(currentPowerResult <= givenNum){
     currentPowerResult = Math.pow(2, power);
     
     if(currentPowerResult === givenNum){
-      result = true;
-      return result;
+      return true;
     }
     else power++;
   }
-  return result;
+  return false;
  }
-
  module.exports = isPowerOf2;
