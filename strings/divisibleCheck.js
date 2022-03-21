@@ -9,7 +9,7 @@
  * divisible by him so numX will return, if not ,return next highet number
  * that is divisible by numY
  */
-function divisibleCheck(numX, numY){
+module.exports.divisibleCheck = function(numX, numY){
   if(numX <= 0 || numY <= 0) return 0;
   let counter100 = 100;//just to make sure it will loop max 100 times
   while(counter100--){
@@ -18,4 +18,3 @@ function divisibleCheck(numX, numY){
   }
 }
 
-module.exports = divisibleCheck;

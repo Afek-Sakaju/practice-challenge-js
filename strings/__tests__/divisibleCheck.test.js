@@ -1,4 +1,4 @@
-const divisibleCheck = require('../divisibleCheck');
+const {divisibleCheck} = require('../divisibleCheck');
 
 describe('function divisibleCheck tests', () => {
   test('numX divisible by numY return numX', () => {
