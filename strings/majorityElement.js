@@ -4,29 +4,28 @@
  * which is an element that appears
  * more than length/2 times in the array
  * 
- * @param {array} arr1 is array containing numbers
- * @param {number} length is the length of arr1
+ * @param {array} numbers is array containing numbers
  * @returns {number} majorNum is the majority element in the array
  */
 
-module.exports.majorityElement = function(arr1, length) {
+module.exports.majorityElement = function(numbers) {
+  const minimumCounts = Math.floor(numbers.length/2);
   const countingObj = {};
   let majorNum = -1;
-  let minimumCounts = Math.ceil(length/2);
 
-  for(const num of arr1) {
-
-    if(!Object.hasOwn(countingObj, num)) {
+  for(const num of numbers) {
+    if(!countingObj.hasOwnProperty(num)) {
       countingObj[num] = 0;
     }
     countingObj[num]++;
   }
   
   for(const [key, value] of Object.entries(countingObj)) {
-    if(value >= minimumCounts) {
+    if(value > minimumCounts) {
       majorNum = +key
       break;
     }
   }
+
   return majorNum;
 }
