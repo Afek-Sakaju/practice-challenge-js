@@ -25,6 +25,7 @@ module.exports.majorityElement = function(arr1, length) {
   for(const [key, value] of Object.entries(countingObj)) {
     if(value >= minimumCounts) {
       majorNum = +key
+      break;
     }
   }
   return majorNum;
