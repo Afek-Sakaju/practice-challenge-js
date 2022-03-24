@@ -1,4 +1,4 @@
-const isPowerOf2 = require('../isPowerOf2');
+const {isPowerOf2} = require('../isPowerOf2');
 
 test('check if num1 can be expressed as 2 powered by some number', () => {
   expect(isPowerOf2(1)).toBe(true);
