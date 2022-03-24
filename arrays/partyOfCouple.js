@@ -8,22 +8,21 @@
  * @returns {number} singleNum will be the single number that 
  *  occurs once in all the given array
  */
-
-module.exports.partyOfCouple = function(arr, size) {
+module.exports.partyOfCouple = function(arr) {
   const countObject = {};
-  let singleNum = "there is no single number";
+  let singleNum = undefined;
 
   for(const num of arr){
-    if(!countObject.hasOwnProperty(num)){
-      countObject[num] = 0;
+    if(countObject.hasOwnProperty(num)){
+      countObject[num] = true;
     }
-    countObject[num]++;
+    else countObject[num] = false;
   }
 
   for(let [key, value] of Object.entries(countObject)) {
-    if(value === 1){
+    if(!value){
       singleNum = +key;
-      return singleNum;
+      break;
     }
   }
   return singleNum;

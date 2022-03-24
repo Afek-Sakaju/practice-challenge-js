@@ -1,13 +1,24 @@
 const {partyOfCouple} = require('../partyOfCouple');
 
-test('find single number in array of couples', () => {
-  const array = [1, 2, 3, 2, 1];
-  const size = 5;
-  expect(partyOfCouple(array, size)).toBe(3);
-})
-
-test('return an string if there is no single number', () => {
-  const array = [1, 2, 2, 1];
-  const size = 4;
-  expect(partyOfCouple(array, size)).toBe("there is no single number");
+describe('partyOfCouple function tests', () => {
+  describe('good cases', () => {
+    test.each([
+      [ [1,2,3,2,1], 3],
+      [ [3,4,4,3,9], 9],
+      [ [0,4,3,3,0], 4]
+    ])('get array %s of couples and return the only single number %s in it',(arr, expected) => {
+      const result = partyOfCouple(arr);
+      expect(result).toBe(expected);
+    })
+  })
+  describe('bad cases', () => {
+    test.each([
+      [ [1, 2, 2, 1], undefined],
+      [ [3, 3, 2, 2], undefined],
+      [ [1, 1], undefined]
+    ])('if array %s of couples have no single number, return %s',(arr, expected) => {
+      const result = partyOfCouple(arr);
+      expect(result).toBe(expected);
+    })
+  })
 })
