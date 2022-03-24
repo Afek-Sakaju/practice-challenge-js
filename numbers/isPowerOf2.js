@@ -24,4 +24,4 @@ function isPowerOf2(givenNum){
   return result;
  }
 
- module.exports = isPowerOf2;
+ module.exports.isPowerOf2 = isPowerOf2;
