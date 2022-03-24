@@ -22,4 +22,4 @@ function isPowerOf2(num1){
   return result;
  }
 
- module.exports = isPowerOf2;
+ module.exports.isPowerOf2 = isPowerOf2;
