@@ -13,7 +13,7 @@ function mergeArraysInPlace(arr1, arr2){
     for(let i = 0; i < arr2.length; i++){
       arr1.push(arr2[i]);
     }
-    arr1.sort();
+    arr1.sort();//משום מה הפקודה לא ממיינת טוב מספרים שליליים שים לב
   }
   return arr1;
 }
