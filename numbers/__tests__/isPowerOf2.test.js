@@ -1,4 +1,4 @@
-const isPowerOf2 = require('../isPowerOf2');
+const {isPowerOf2} = require('../isPowerOf2');
 
 describe('isPowerOf2 tests', () => {
   describe('good cases', () => {
