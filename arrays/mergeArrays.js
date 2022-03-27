@@ -9,13 +9,20 @@
  * to the function in sorted order
  */
 function mergeArraysInPlace(arr1, arr2){
+  function compareNums(a, b){
+    if(a > b) return 1;
+    else if(a < b) return -1;
+    else return 0;
+  }
   if(arr2.length > 0){
     for(let i = 0; i < arr2.length; i++){
       arr1.push(arr2[i]);
     }
-    arr1.sort();//משום מה הפקודה לא ממיינת טוב מספרים שליליים שים לב
+    arr1.sort(compareNums);
   }
   return arr1;
 }
 module.exports.mergeArraysInPlace = mergeArraysInPlace;
+
+
 
