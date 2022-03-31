@@ -23,16 +23,13 @@ module.exports.missingNumber_N = function (nums) { // R: O(N) M: O(N)
 }
 
 module.exports.missingNumber = function (nums) { // R: O(N) M: O(1)
-    for(let i = nums.length-1; i >= 0; i--) { // O(N)
-        if(nums[i] <= 0) nums.splice(i, 1);
-    }
-
+    // filter the numbers that not in the range 1-nums.length
     for(let i = nums.length-1; i >= 0; i--) { // O(N)
         if(nums[i] > nums.length) nums.splice(i, 1);
     }
 
     let i = 0;
-    while(i < nums.length) { // 2*O(N)
+    while(i < nums.length) { // O(N) and in the worst case: O(2*N)
         if(nums[i] === i + 1) {
             i++;
             continue;
