@@ -1,20 +1,8 @@
-function maxNumRecoursive(array) {
-  let i = array.length - 1;
-  let max = array[i];
-  return checkMax(array[i]);
-
-  function checkMax(currentNum){
-    if(!i) return max;
-
-    if(currentNum > max) {
-      max = currentNum;
-      return max;
-    }
-
-    currentNum = array[i-1];
-    return checkMax(currentNum);
-  }
+function maxNumRecoursive(array, max = array[0], i = array.length-1){
+  if(!i) return max;
+  if(array[i] > max) max = array[i];
+  return maxNumRecoursive(array, max, i-1);
 }
 
-module.exports = maxNumRecoursive;
+module.exports.maxNumRecoursive = maxNumRecoursive;
 
