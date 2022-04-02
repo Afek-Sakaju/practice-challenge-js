@@ -1,15 +1,11 @@
 /**
  * function accepts object and return all his values sum
  * 
- * @param {Object} obj1 is an object given to the function
- * @returns {Number} number of the sum containing all the 
- * values of obj 1
+ * @param {Object} obj is an object of values as numbers
+ * @returns {Number} the sum of the object values param
  */
-function objectValueSum(obj1){
-  let sumOfObj1 = 0;
-  for(let [key, value] of Object.entries(obj1)){
-    sumOfObj1 += value;
-  }
-  return sumOfObj1;
+function objectValueSum(obj){
+  const objSum = Object.values(obj).reduce((total, value) => total + value, 0);
+  return objSum;
 }
-module.exports = objectValueSum;
+module.exports.objectValueSum = objectValueSum;
