@@ -1,4 +1,4 @@
-const {isCorrectParentheses} = require('../correctParentheses2');
+const {isCorrectParenthesesRec : isCorrectParentheses} = require('../correctParentheses2');
 describe('correctParentheses2 tests', () => {
   it.each([
     ['(()(()))()'],
@@ -11,7 +11,7 @@ describe('correctParentheses2 tests', () => {
     ['((())()()'],
     ['(()'],
     ['))(('],
-    ['()((']
+    ['()))']
   ])('expect str: "%s", to return false', (str) => {
     expect(isCorrectParentheses(str)).toBeFalsy();
   })
