@@ -1,5 +1,4 @@
 const {objectValueSum} = require('../objectValueSum');
-
 describe('objectValueSum functions tests', () => {
   test.each([
     [{a:0,b:0,c:7}, 7],
