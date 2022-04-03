@@ -19,7 +19,9 @@ function isPowerOf2(givenNum){
       result = true;
       return result;
     }
-    else power++;
+    else {
+      power++;
+    }
   }
   return result;
  }
