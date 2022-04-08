@@ -6,8 +6,8 @@
  * characters in it
  * 
  * @param {String} str is string given to the function 
- * @returns {String} dupChars that contains all the duplicated chars
- * from the given string
+ * @returns {String} dupChars that contains all the duplicated 
+ * chars from the given string
  */
 function returnDuplictedChars(str){
   const obj = {};
