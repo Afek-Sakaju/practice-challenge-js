@@ -1,9 +1,28 @@
 const {isPowerOf2} = require('../isPowerOf2');
 
-test('check if num1 can be expressed as 2 powered by some number', () => {
-  expect(isPowerOf2(1)).toBe(true);
-})
-
-test('check if num1 cant be expressed as 2 powered by some number', () => {
-  expect(isPowerOf2(98)).toBe(false);
-})
+describe('isPowerOf2 tests', () => {
+  describe('good cases', () => {
+    it.each([
+      [1],
+      [4],
+      [16],
+      [32],
+      [2]
+    ])('return true if %s obtainable by power of 2 by some number',(num) => {
+      expect(isPowerOf2(num)).toBeTruthy()
+    })
+  });
+  
+  describe('bad cases', () => {
+    it.each([
+      [98],
+      [99],
+      [0],
+      [3],
+      [33],
+      [-9]
+    ])("return false if %s isn't obtainable by power of 2 by some number",(num) => {
+      expect(isPowerOf2(num)).toBeFalsy()
+    })
+  })
+});
