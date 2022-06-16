@@ -5,25 +5,32 @@ Expected Time Complexity: O(n2)
 Expected Auxiliary Space: O(1) */
 
 module.exports.find3Numbers = function (arr, x) {
-    if (arr.length < 3) return false
+    if (arr.length < 3) return false;
+
     arr.sort((a, b) => {
-        if (a < b) return -1
-        if (a > b) return 1
-        return 0
-    })
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+    });
 
-    let limit = arr.length
-    for (let i = 0; i < limit - 2; i++) {
-        for (let j = i + 1; j < limit - 1; j++) {
-            for (let k = j + 1; k < limit; k++) {
-                let sum = arr[i] + arr[j] + arr[k]
-                if (sum === x) return true
+    const n = arr.length;
+    let i = 0,
+        j = i + 1,
+        k = n - 1;
 
-                if (sum > x) {
-                    limit = k
-                }
-            }
-        }
+    while (true) {
+        let sum = arr[i] + arr[j] + arr[k];
+        if (sum === x) return true;
+
+        if (k > j + 1) {
+            if (sum > x) k--;
+            if (sum < x) j++;
+        } else if (sum < x) i++;
+        else return false;
     }
-    return false
-}
+    /* the important key to solve the problem 
+    is defining - k(third pointer) to start from the end, 
+    and than increasing the sum compared to x, if its lower getting 
+    smaller number to the sum, and the opposite case
+    instead of the first intuitive solution of Brute Force */
+};
