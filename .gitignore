@@ -1,3 +1,4 @@
 node_modules/
-html-report/
 html-report/jest-html-reporters-attach/report/result.js
+html-report/jest-html-reporters-attach/report/index.js
+html-report/report.html
