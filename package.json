@@ -10,7 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^27.5.1",
-    "jest-html-reporters": "^3.0.5"
+    "jest-html-reporters": "^3.0.5",
+    "prettier": "2.7.1"
   },
   "dependencies": {
     "axios": "^0.26.1",
