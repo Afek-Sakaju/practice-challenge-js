@@ -4,3 +4,13 @@ A subset of all tree nodes is an independent set
 if there is no edge between any two nodes of the subset. 
 Your task is to complete the function LISS(), 
 which finds the size of the Largest Independent Set. */
+
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+function LISS(root) {}
