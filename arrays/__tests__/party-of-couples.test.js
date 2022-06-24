@@ -1,6 +1,6 @@
-const { partyOfCouple } = require('../partyOfCouple');
+const { partyOfCouple } = require('../party-of-couples');
 
-describe('partyOfCouple function tests', () => {
+describe('party-of-couples function tests', () => {
     describe('good cases', () => {
         test.each([
             [[1, 2, 3, 2, 1], 3],

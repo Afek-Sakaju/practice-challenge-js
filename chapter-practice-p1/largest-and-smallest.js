@@ -12,3 +12,4 @@ module.exports.getMaxAndMin = function (arr) {
 
     return [min, max];
 };
+//also possible to make Math.max/min methods
