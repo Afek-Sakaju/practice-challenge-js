@@ -1,3 +1,5 @@
+// Q5: "How do you count a number of vowels and consonants in a given string?"
+
 module.exports.vowelsConsonantsCount = function (str) {
     const obj = { vowel: 0, consonants: 0, special: 0 };
     const VOWEL = 'aeuio';
