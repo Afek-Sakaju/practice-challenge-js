@@ -1,7 +1,22 @@
 /* In a party of N people, each person is denoted by an integer.
 Couples are represented by the same number.
 Find out the only single person in the party of couples. */
-module.exports.partyOfCouple = function (arr) {
+
+module.exports.findSingle = function (arr) {
+    let bit = 0;
+
+    for (const char of arr) {
+        bit ^= char;
+    }
+
+    if (arr.length % 2 !== 0) {
+        return bit;
+    }
+
+    return undefined;
+};
+
+module.exports.findSingleWithObject = function (arr) {
     const countObject = {};
     let singleNum = undefined;
 
