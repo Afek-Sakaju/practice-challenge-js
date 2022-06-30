@@ -1,4 +1,4 @@
-/* Q3:"Merge 2 arrays without extra space"
+/* Q3: "Merge 2 arrays without extra space"
 Given two sorted arrays arr1[] and arr2[] 
 (of sizes n and m in non-decreasing order). 
 Merge them in sorted order without using any extra space. 

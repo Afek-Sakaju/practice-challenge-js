@@ -1,4 +1,4 @@
-//Q12: "How are duplicates removed from an array without using any library?"
+// Q12: "How are duplicates removed from an array without using any library?"
 
 module.exports.removeDuplicated = function (arr) {
     const obj = {};

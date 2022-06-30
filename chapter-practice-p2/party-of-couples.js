@@ -1,6 +1,9 @@
-/* In a party of N people, each person is denoted by an integer.
+/* Q14: "Party of couples " 
+In a party of N people, each person is denoted by an integer.
 Couples are represented by the same number.
-Find out the only single person in the party of couples. */
+Find out the only single person in the party of couples. 
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(1) */
 
 module.exports.findSingle = function (arr) {
     let bit = 0;
