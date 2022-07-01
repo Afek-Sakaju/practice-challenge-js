@@ -1,3 +1,6 @@
+/* Q1: "Write a function that accepts number N 
+and prints a triangle of size N" */
+
 function starsTriangle(num) {
     if (!num) return;
 
