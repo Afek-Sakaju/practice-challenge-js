@@ -1,5 +1,5 @@
 /* Q2: "Write recoursive function that accepts array 
-and return the biggest number in it"*/
+and return the biggest number in it" */
 
 module.exports.maxNum = function (arr) {
     function maxNumRec(max, i) {
