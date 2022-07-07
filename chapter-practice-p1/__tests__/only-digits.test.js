@@ -1,17 +1,17 @@
-const { isOnlyDigit } = require('../only-digits');
+const { onlyDigits } = require('../only-digits');
 
-describe('isOnlyDigit tests', () => {
+describe('only-digits tests', () => {
     describe('good cases', () => {
         test.each([['1234'], ['0'], [''], ['12365448401324904013198']])(
-            "isOnlyDigit return true for '%s'",
+            "function return true for string: '%s'",
             (str) => {
-                expect(isOnlyDigit(str)).toBeTruthy();
+                expect(onlyDigits(str)).toBeTruthy();
             }
         );
     });
-    describe('good cases', () => {
+    describe('bad cases', () => {
         test.each([
-            ['123O4'],
+            ['1234k'],
             ['a'],
             ['#%'],
             [undefined],
@@ -19,8 +19,8 @@ describe('isOnlyDigit tests', () => {
             [[]],
             [{}],
             [false],
-        ])("isOnlyDigit return false for '%s'", (str) => {
-            expect(isOnlyDigit(str)).toBeFalsy();
+        ])("function return false for string: '%s'", (str) => {
+            expect(onlyDigits(str)).toBeFalsy();
         });
     });
 });
