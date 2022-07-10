@@ -4,7 +4,10 @@
 function LCS(x,y){
     const X = x.length + 1;
     const Y = y.length + 1;
-    const c = buildMatrix(X, Y, 0);
+    const c = buildMatrix(X, Y, '.');
+    let row = X; while(row--) c[row][0] = 0;
+    let col = Y; while(col--) c[0][col] = 0;
+
     const b = buildMatrix(X, Y, '.');
     for(let i = 1; i < X; i++){
         for(let j = 1; j < Y; j++){
@@ -77,6 +80,6 @@ function printLCS(b, X, Y, i = X.length, j = Y.length) {
     return result;
 }
 
-const X = 'GAGTTCG';
-const Y = 'AATACTG';
+const X = 'ACTGT';
+const Y = 'TATGC';
 printLCS(LCS(X,Y), X, Y)
