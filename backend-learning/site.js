@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
+const path = require('path');
+//const router = express.Router();
 
-app.get('/', (req, res) => {
-    res.send('Hello world');
-});
+const publicPath = path.join('/', 'public');
+app.use(express.static(publicPath));
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+app.listen(3000, () => {
+    console.log(`Example app listening on port ${3000}`);
 });
