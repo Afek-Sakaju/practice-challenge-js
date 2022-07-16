@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.use((req, res, next) => {
-    console.log(`good evening`);
+    console.log(`entry identified on route: '/afek' `);
     next();
 });
 
@@ -10,44 +10,29 @@ router
     .route('/:version')
     .get((req, res, next) => {
         const version = req.params.version;
-        const dataLearned = {
-            array: true,
-            primitiveVariables: true,
-            object: false,
-            stack: false,
-            queue: false,
-            linkedList: false,
-            binaryTree: false,
-            map: false,
-            set: false,
-        };
         const knowledge = {
-            mainLanguage: undefined,
-            exersicesLevel: 'begginer',
-            studyInstitute: 'school',
+            mainLanguage: 'Undefined',
+            exersicesLevel: 'Begginer',
+            studyInstitute: 'School',
         };
+
         switch (version) {
             case '1':
-                res.json(dataLearned, '\n', knowledge);
+                res.json(knowledge);
                 break;
             case '2':
-                for (const [key, value] of Object.entries(dataLearned)) {
-                    value = true;
-                }
-                for (const [key, value] of Object.entries(knowledge)) {
-                    value = true;
-                }
-                res.json(`get request for afek v${version}.\n
-                dataLearned by current students version:${dataLearned}.\n
-                more knowledge about him:${knowledge}`);
+                knowledge.mainLanguage = 'Java-Script';
+                knowledge.exersicesLevel = 'Medium';
+                knowledge.studyInstitute = 'Just Like That - course';
+                res.json(knowledge);
                 break;
             default:
-                res.send("the version is'nt supported ");
+                res.send("afek's version is not supported ");
         }
     })
     .post((req, res, next) => {
         const version = req.params.version;
-        res.send('get request for afek' + version);
+        res.send('post request for afek' + version);
     });
 
 module.exports = router;
