@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const afek = require('./routes/afek');
-const port = 3000;
+const port = 3001;
+const cors = require('cors');
 
 app.use('/afek', afek);
 //use the afek.js file to handle
