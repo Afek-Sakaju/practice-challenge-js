@@ -10,3 +10,7 @@ module.exports.registerUser = async function (username, password) {
 
     return user;
 };
+
+module.exports.logoutUser = async function (userId) {
+    //todo: do something in the user data
+};

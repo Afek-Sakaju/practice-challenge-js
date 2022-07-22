@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const mainRouter = require('./routes/main');
+require('./config/passport-config')
 //const cors = require('cors');
 
 const app = express();
@@ -17,6 +18,12 @@ app.use(
         cookie: { secure: flase },
     })
 );
+
+//init passport on every route call.
+app.use(passport.initialize())
+
+//allow passport to use "express-session".
+app.use(passport.session())
 
 app.use('/', mainRouter);
 
