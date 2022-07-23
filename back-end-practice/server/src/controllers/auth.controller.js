@@ -9,5 +9,6 @@ module.exports.registerUserCtrl = function (req, res, next) {
 module.exports.logoutUserCtrl = function (req, res, next) {
     const userId = req.user.userId; // req.user.userId;
     const user = await logoutUserCtrl(userId);
+    // todo: logout from passport session
     res.sendStatus(200);
 };
