@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const mainRouter = require('./routes/main');
+const errorHandlingMW = require('./middleware/errorHandling.middleware');
+
 require('./config/passport-config')
 //const cors = require('cors');
 
@@ -26,6 +28,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/', mainRouter);
+
+app.use(errorHandlingMW);
 
 app.listen(3000, () => {
     console.log('app listen to http://localhost:3000');
