@@ -14,6 +14,10 @@ class UserModel {
     static getUserById(userId) {
         //todo: get user from file
     }
+
+    static getUserByUserName(userId) {
+        //todo: get user from file
+    }
 }
 
 module.exports = UserModel;

@@ -6,10 +6,14 @@ const { registerUserCtrl,logoutUserCtrl } = require('../controllers/auth.control
 
 router.use(logAPI);
 
-router.post('/login', (req, res, next) => {
-    res.send('OK');
-});
+router.post('/login', passport.authenticate('local',{
+    successRedirect: '/dashboard',
+    failureRedirect: '/login',
+    // session: false
+}));
 
 router.post('/register', registerUserCtrl);
 
 router.post('/logout/:userId', isAuthenticatedUser,logoutUserCtrl);
+
+module.exports = router;
