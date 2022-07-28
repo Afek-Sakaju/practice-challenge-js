@@ -1,23 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const diary = require('./diary-recipes');
-const meaty = require('./meaty-recipes');
+const recipesListRoute = require('./recipes-list-route');
 
 router.use((req, res, next) => {
     console.log(`user visit from url:${req.originalUrl}`)
     next();
 });
 
-router.use('/meaty',meaty);
-
-router.use('/diary',diary);
+router.use('/recipe',recipesListRoute);
 
 router.get('/health', (req, res, next) => {
     res.send('Alive');
 });
 
-router.get('/',(req, res) => {
+/* router.get('/',(req, res) => {
         res.send('This URL does not return data !');
-});
+}); *///not sure if its relevant
 
 module.exports = router;
