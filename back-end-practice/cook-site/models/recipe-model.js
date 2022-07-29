@@ -1,62 +1,60 @@
-class Recipe{
-    constructor(
-        recipeName, ingredients, cookingTime, difficulityLevel){
-            this._recipeName = recipeName || '';
-            this._ingredients = ingredients || [];
-            this._cookingTime = cookingTime || '00:00';
-            this._difficulityLevel = difficulityLevel || '';
+class Recipe {
+    constructor(recipeName, ingredients, cookingTime, difficulityLevel) {
+        this._recipeName = recipeName || '';
+        this._ingredients = ingredients || [];
+        this._cookingTime = cookingTime || '00:00';
+        this._difficulityLevel = difficulityLevel || '';
     }
 
-    get recipeName(){
+    get recipeName() {
         return this._recipeName;
     }
 
-    get ingredients(){
+    get ingredients() {
         return this._ingredients;
     }
 
-    get cookingTime(){
+    get cookingTime() {
         return this._cookingTime;
     }
 
-    get difficulityLevel(){
+    get difficulityLevel() {
         return this._difficulityLevel;
     }
 
-    set recipeName(name){
+    set recipeName(name) {
         this._recipeName = name;
     }
 
-    set ingredients(ind){
+    set ingredients(ind) {
         this._ingredients = ind;
     }
 
-    set cookingTime(time){
+    set cookingTime(time) {
         this._cookingTime = time;
     }
 
-    set difficulityLevel(diff){
+    set difficulityLevel(diff) {
         this._difficulityLevel = diff;
     }
 
-    toString(){
+    toString() {
         return {
-            recipeName : this._recipeName,
-            ingredients : this._ingredients,
-            cookingTime : this._cookingTime,
-            difficulityLevel : this._difficulityLevel
-        }
+            recipeName: this._recipeName,
+            ingredients: this._ingredients,
+            cookingTime: this._cookingTime,
+            difficulityLevel: this._difficulityLevel,
+        };
     }
 
-    static getRecipeByName(name){
+    static getRecipeByName(name) {
         return {
-            recipeName : name.recipeName,
-            ingredients : name.ingredients,
-            cookingTime : name.cookingTime,
-            difficulityLevel : name.difficulityLevel
-        }
+            recipeName: name.recipeName,
+            ingredients: name.ingredients,
+            cookingTime: name.cookingTime,
+            difficulityLevel: name.difficulityLevel,
+        };
     }
 }
 
 module.exports = Recipe;
-
