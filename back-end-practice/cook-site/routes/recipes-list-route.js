@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Recipe = require('../models/recipe-model');
-let givenRecipe;
+const existanceCheck = require('../services/new-recipe-service');
 
 const pastaBolonez = new Recipe(
     'pasta-bolonez',
@@ -36,6 +36,7 @@ router.route('/pizza').get((req, res, next) => {
     res.json(Recipe.getRecipeByName(pizza));
 });
 
+let createdRecipes = [];
 router.route('/new/:recipeName').put((req, res, next) => {
     const strRecipe = req.body;
     /* todo : 
@@ -44,13 +45,14 @@ router.route('/new/:recipeName').put((req, res, next) => {
         given recipe.ingridients = [1,2,3]
         2) put it in exsiting variable "givenRecipe" */
     console.log('hello' + req.params.recipeName);
-    givenRecipe = new Recipe(req.params.recipeName);
+    createdRecipes.push(new Recipe(req.params.recipeName));
     next();
 });
 
 router.route('/:any').get((req, res, next) => {
-    if (givenRecipe && req.params.any === givenRecipe.recipeName) {
-        res.json(givenRecipe.toString());
+    const check = existanceCheck(req.params.any, createdRecipes);
+    if (check !== false) {
+        res.json(createdRecipes[check].toString());
     } else res.sendStatus('404');
 });
 

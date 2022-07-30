@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const recipesListRoute = require('./recipes-list-route');
+const AuthenticationRoute = require('./authentication-route');
 
 router.use((req, res, next) => {
     console.log(`user visit from url:${req.originalUrl}`);
     next();
 });
+
+router.use('/user', AuthenticationRoute);
 
 router.use('/recipe', recipesListRoute);
 
