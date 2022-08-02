@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "node dist/app.js",
+        "start": "node back-end-practice/cook-site/app.js",
         "dev": "nodemon src/app.js",
         "jest-init": "jest --init",
         "test": "jest"
@@ -25,6 +25,7 @@
         "fs": "^0.0.1-security",
         "helmet": "^5.1.0",
         "nodemon": "^2.0.19",
+        "passport": "^0.6.0",
         "passport-local": "^1.0.0",
         "path": "^0.12.7",
         "uuid": "^8.3.2"
