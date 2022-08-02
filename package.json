@@ -4,7 +4,7 @@
     "description": "",
     "scripts": {
         "start": "node back-end-practice/cook-site/app.js",
-        "dev": "nodemon src/app.js",
+        "dev": "nodemon back-end-practice/cook-site/app.js",
         "jest-init": "jest --init",
         "test": "jest"
     },

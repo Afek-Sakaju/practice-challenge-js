@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3000;
-const users = [];
+const users = { username: 'afek', password: '123' };
 
 app.use(
     session({
@@ -32,7 +32,7 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const publicPath = path.join(__dirname, '.', 'public');
+const publicPath = path.join(__dirname, '..', 'public');
 app.use('/static', express.static(publicPath));
 
 app.use('/', mainRoute);
