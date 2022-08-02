@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const passport = require('passport');
 const mainRoute = require('./routes/main-route');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -26,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(passport.initialize());
 
-app.use(passport.session);
+app.use(passport.session());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
