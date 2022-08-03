@@ -7,15 +7,6 @@ const recipesListRoute = require('./recipes-list-route');
 const UserModel = require('../models/user-model');
 const users = require('../data/users-data');
 
-router.use((req, res, next) => {
-    console.log(`user visit from url:${req.originalUrl}`);
-    next();
-});
-
-router.get('/login', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'public/login.html'));
-});
-
 router.post(
     '/login',
     passport.authenticate('local', {
@@ -24,6 +15,15 @@ router.post(
         // session: false
     })
 );
+
+router.use((req, res, next) => {
+    console.log(`user visit from url:${req.originalUrl}`);
+    next();
+});
+
+router.get('/login', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'public/login.html'));
+});
 
 router.post('/register/:userName', (req, res, next) => {
     users.push(new UserModel(req.params.userName));
