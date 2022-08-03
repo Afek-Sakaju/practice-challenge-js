@@ -1,7 +1,7 @@
 const express = require('express');
-const app = express();
 const mainRoute = require('./routes/main-route');
 const port = 3001;
+const app = express();
 
 app.use('/', mainRoute);
 
