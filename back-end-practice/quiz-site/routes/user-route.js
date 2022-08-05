@@ -1,7 +1,8 @@
 const express = require('express');
 const { users } = require('../models/users-model');
-const router = express.Router();
 const { authenticateUser } = require('../middleware/auth-mw');
+
+const router = express.Router();
 
 router.use((req, res, next) => {
     console.log(req.method, req.originalUrl);

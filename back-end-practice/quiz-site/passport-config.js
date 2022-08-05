@@ -1,6 +1,6 @@
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-//same^: const { Strategy: LocalStrategy } = require('passport-local');
+const { Strategy: LocalStrategy } = require('passport-local');
+//same^: const LocalStrategy = require('passport-local').Strategy
 const { users } = require('./models/users-model');
 
 passport.use(
@@ -12,17 +12,17 @@ passport.use(
             console.log(`Auth: user '${username}' not found`);
             done(null, false);
         } else if (user.password !== password) {
-            done(null, false);
             console.log(`Auth: user '${username}' has not match the password`);
+            done(null, false);
         } else {
-            done(null, user);
             console.log(`Auth: user '${username}' login successfuly`);
+            done(null, user);
         }
     })
 );
 
 passport.serializeUser(function (user, done) {
-    done(null, users[id]);
+    done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {

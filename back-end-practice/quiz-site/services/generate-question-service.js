@@ -43,5 +43,3 @@ function questionMake(question, answer) {
     and compare the user's answer with 'answer'
     return true if same, else false*/
 }
-
-generateQuestion('animals');
