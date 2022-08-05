@@ -2,12 +2,12 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
+require('./passport-config');
 const userRoute = require('./routes/user-route');
 const authRoute = require('./routes/auth-route');
 const mainRoute = require('./routes/main-route');
-const bodyParser = require('body-parser');
-require('./passport');
 
 const app = express();
 
@@ -20,6 +20,9 @@ app.use(
     })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -27,8 +30,8 @@ const publicPath = path.join(__dirname, '..', 'public');
 app.use('/static', express.static(publicPath));
 
 app.use('/', mainRoute);
-app.use('/users', usersRouter);
-app.use('/auth', authRouter);
+app.use('/users', userRoute);
+app.use('/auth', authRoute);
 
 //error handling
 app.use((err, req, res, next) => {
