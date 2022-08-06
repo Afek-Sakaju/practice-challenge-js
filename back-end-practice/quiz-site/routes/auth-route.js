@@ -11,7 +11,7 @@ router.post(
     '/login',
     passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: 'https://www.google.com',
+        failureRedirect: 'login',
     })
 );
 

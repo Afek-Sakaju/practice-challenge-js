@@ -8,6 +8,7 @@ require('./passport-config');
 const userRoute = require('./routes/user-route');
 const authRoute = require('./routes/auth-route');
 const mainRoute = require('./routes/main-route');
+const quizRoute = require('./routes/quiz-route');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use('/static', express.static(publicPath));
 app.use('/', mainRoute);
 app.use('/users', userRoute);
 app.use('/auth', authRoute);
+app.use('/quiz', quizRoute);
 
 //error handling
 app.use((err, req, res, next) => {
