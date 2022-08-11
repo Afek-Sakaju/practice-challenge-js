@@ -1,13 +1,20 @@
 const express = require('express');
-const path = require('path');
-const passport = require('passport');
-const mainRoute = require('./routes/main-route');
-const session = require('express-session');
 const bodyParser = require('body-parser');
+const path = require('path');
+const session = require('express-session');
+const passport = require('passport');
+
+const mainRouter = require('./routers/main.router');
+const authRouter = require('./routers/auth.router');
+const recipesRouter = require('./routers/recipes-list.router');
+require('./config/passport-config');
 
 const app = express();
-const port = 3000;
-const users = { username: 'afek', password: '123' };
+
+app.use(bodyParser.json());
+app.use(bodyParser.express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use(
     session({
@@ -18,27 +25,22 @@ app.use(
     })
 );
 
-const initalizePassport = require('../config/passport-config');
-initalizePassport(passport, (username) => {
-    users.find((user) => user.username === username);
-});
-
-app.use(express.urlencoded({ extended: false }));
-
 app.use(passport.initialize());
-
 app.use(passport.session());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const publicPath = path.join(__dirname, '..', 'public');
-app.use('/static', express.static(publicPath));
+app.use('/', mainRouter);
+app.use('/auth', authRouter);
+app.use('/recipe', recipesRouter);
 
-app.use('/', mainRoute);
+app.use((err, req, res, next) => {
+    console.error(`${req.method}:${req.originalUrl}, failed with error:${err}`);
+    next(err);
+});
 
+const port = 3000;
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
-
-module.exports = users;

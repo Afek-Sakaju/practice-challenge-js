@@ -3,7 +3,6 @@ const router = express.Router();
 const path = require('path');
 const passport = require('passport');
 const checkAuthenticated = require('../middleware/auth-middleware');
-const recipesListRoute = require('./recipes-list-route');
 const UserModel = require('../models/user-model');
 const users = require('../data/users-data');
 
@@ -32,8 +31,6 @@ router.post('/register/:userName', (req, res, next) => {
 router.post('/logout', checkAuthenticated, (req, res, next) => {
     res.send('bye-bye');
 });
-
-router.use('/recipe', recipesListRoute);
 
 router.get('/health', (req, res, next) => {
     res.send('Alive');
