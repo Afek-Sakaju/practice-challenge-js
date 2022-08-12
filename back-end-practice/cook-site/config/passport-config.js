@@ -1,9 +1,9 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const userList = require('./mocks/USERS.mock.json');
+const userList = require('../mocks/USERS.mock.json');
 
 passport.use(
-    new LocalStrategy(username, password, (done) => {
+    new LocalStrategy((username, password, done) => {
         const user = userList.find((u) => u.username === username);
 
         if (!user) return done('user not found', null);

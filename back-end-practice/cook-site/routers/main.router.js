@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const isAuthenticatedMW = require('../middleware/auth-middleware');
 
 router.use((req, res, next) => {
     console.log(`user visit from url:${req.originalUrl}`);

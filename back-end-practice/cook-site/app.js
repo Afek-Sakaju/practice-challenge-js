@@ -12,9 +12,9 @@ require('./config/passport-config');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(__dirname, '.', 'public')));
 
 app.use(
     session({

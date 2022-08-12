@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "node back-end-practice/quiz-site/app.js",
+        "start": "nodemon back-end-practice/cook-site/app.js",
         "dev": "nodemon back-end-practice/cook-site/app.js",
         "jest-init": "jest --init",
         "test": "jest"

@@ -52,11 +52,15 @@ module.exports.createRecipeCtrl = async function (req, res, next) {
         return res.status(406).send(`missing recipe's name\\ingredients`);
     }
 
-    recipesList.push(newRecipe);
+    if (recipesList.some((r) => r.name === newRecipe.name)) {
+        return res.status().send('hey');
+    }
+
+    if (recipesList.includes(newRecipe.name)) recipesList.push(newRecipe);
 
     fs.writeFileSync(recipesPath, JSON.stringify(recipesList), {
         encoding: 'utf8',
     });
 
-    res.sendStatues(201);
+    res.sendStatus(201);
 };

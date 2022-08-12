@@ -16,5 +16,23 @@
         "ingredients": "white-bread,chedder-cheese,tomato-sauce,salt,oil",
         "cookingTime": "01:15",
         "difficulityLevel": "medium"
+    },
+    {
+        "name": "spicy-mio-sauce",
+        "ingredients": "mayo,black-pepper,chilli-powder",
+        "cookingTime": "00:10",
+        "difficulityLevel": "easy"
+    },
+    {
+        "name": "spicy-mio-sauce",
+        "ingredients": "mayo,black-pepper,chilli-powder",
+        "cookingTime": "00:10",
+        "difficulityLevel": "easy"
+    },
+    {
+        "name": "spicy-mio-sauce",
+        "ingredients": "mayo,black-pepper,chilli-powder",
+        "cookingTime": "00:10",
+        "difficulityLevel": "easy"
     }
 ]

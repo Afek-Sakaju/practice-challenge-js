@@ -6,6 +6,7 @@ router.post(
     '/login',
     passport.authenticate('local', {
         successRedirect: '/recipe',
+        failureRedirect: '/e404.html',
     })
 );
 
