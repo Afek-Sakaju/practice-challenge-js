@@ -1,9 +1,4 @@
-function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-
-    res.redirect('/login');
-}
-
-module.exports = checkAuthenticated;
+module.exports.isAuthenticatedMW = function (req, res, next) {
+    if (req.isAuthenticated()) next();
+    else res.redirect('/lock.jpg');
+};

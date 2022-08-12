@@ -6,7 +6,7 @@ const passport = require('passport');
 
 const mainRouter = require('./routers/main.router');
 const authRouter = require('./routers/auth.router');
-const recipesRouter = require('./routers/recipes-list.router');
+const recipesRouter = require('./routers/recipes.router');
 require('./config/passport-config');
 
 const app = express();
