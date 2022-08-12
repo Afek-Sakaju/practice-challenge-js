@@ -53,10 +53,10 @@ module.exports.createRecipeCtrl = async function (req, res, next) {
     }
 
     if (recipesList.some((r) => r.name === newRecipe.name)) {
-        return res.status().send('hey');
+        return res
+            .status(400)
+            .send(`the recipe: ${newRecipe.name} already exist`);
     }
-
-    if (recipesList.includes(newRecipe.name)) recipesList.push(newRecipe);
 
     fs.writeFileSync(recipesPath, JSON.stringify(recipesList), {
         encoding: 'utf8',
