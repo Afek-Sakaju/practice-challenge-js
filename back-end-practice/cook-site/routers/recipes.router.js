@@ -15,6 +15,6 @@ router.get('/all', isAuthenticatedMW, sendAllRecipesCtrl);
 
 router.get('/', filteredRecipeListCtrl); //(by query string)
 
-router.post('/new-recipe', createRecipeCtrl);
+router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
 
 module.exports = router;
