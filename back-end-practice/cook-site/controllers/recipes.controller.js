@@ -1,4 +1,7 @@
+const fs = require('fs');
+const path = require('path');
 const recipesList = require('../mocks/RECIPES.mock.json');
+const recipesPath = path.join(__dirname, '..', 'mocks', 'RECIPES.mock.json');
 
 module.exports.getRecipeByNameCtrl = (req, res, next) => {
     const recipeName = req.params.recipeName;
@@ -35,4 +38,25 @@ module.exports.filteredRecipeListCtrl = (req, res, next) => {
     });
 
     res.json(filteredlist);
+};
+
+module.exports.createRecipeCtrl = async function (req, res, next) {
+    const newRecipe = {
+        name: req.body.name,
+        ingredients: req.body.ingredients,
+        cookingTime: req.body.cookingTime ?? 'unknown',
+        difficulityLevel: req.body.difficulityLevel ?? 'unknown',
+    };
+
+    if (newRecipe.name === undefined || newRecipe.ingredients === undefined) {
+        return res.status(406).send(`missing recipe's name\\ingredients`);
+    }
+
+    recipesList.push(newRecipe);
+
+    fs.writeFileSync(recipesPath, JSON.stringify(recipesList), {
+        encoding: 'utf8',
+    });
+
+    res.sendStatues(201);
 };
