@@ -7,7 +7,26 @@ module.exports.getRecipeByNameCtrl = (req, res, next) => {
     const recipeName = req.params.recipeName;
     const recipe = recipesList.find((r) => r.name === recipeName);
 
+    if (!recipe) return res.status(400).send('recipe has not found');
+
     res.json(recipe);
+};
+
+module.exports.deleteRecipeCtrl = (req, res, next) => {
+    const recipeName = req.params.recipeName;
+    const recipeIndex = recipesList.findIndex((r) => r.name === recipeName);
+
+    if (typeof recipeIndex !== 'number') {
+        return res.status(400).send('recipe has not found');
+    }
+
+    recipesList.splice(recipeIndex, 1);
+
+    fs.writeFileSync(recipesPath, JSON.stringify(recipesList), {
+        encoding: 'utf8',
+    });
+
+    res.sendStatus(200);
 };
 
 module.exports.sendAllRecipesCtrl = (req, res, next) => {
@@ -57,6 +76,8 @@ module.exports.createRecipeCtrl = async function (req, res, next) {
             .status(400)
             .send(`the recipe: ${newRecipe.name} already exist`);
     }
+
+    recipesList.push(newRecipe);
 
     fs.writeFileSync(recipesPath, JSON.stringify(recipesList), {
         encoding: 'utf8',

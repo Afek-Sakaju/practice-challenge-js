@@ -1,13 +1,14 @@
 const express = require('express');
-const passport = require('passport');
+const {
+    loginRedirectCtrl,
+    successLoginCtrl,
+} = require('../controllers/auth.controller');
+const { isAuthenticatedMW } = require('../middleware/auth-middleware');
+
 const router = express.Router();
 
-router.post(
-    '/login',
-    passport.authenticate('local', {
-        successRedirect: '/recipe',
-        failureRedirect: '/e404.html',
-    })
-);
+router.post('/login', loginRedirectCtrl);
+
+router.get('/success', isAuthenticatedMW, successLoginCtrl);
 
 module.exports = router;
