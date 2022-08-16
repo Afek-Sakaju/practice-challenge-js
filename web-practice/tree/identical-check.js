@@ -1,5 +1,5 @@
-/* Write an efficient algorithm to check if two binary trees 
-are identical or not. 
+/* Write an efficient algorithm to check 
+if two binary trees are identical or not. 
 Two binary trees are identical 
 if they have identical structure 
 and their contents are also the same. */
