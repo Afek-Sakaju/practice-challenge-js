@@ -6,15 +6,6 @@ You have to return a list of digits which represent the number X.
 Expected Time Complexity: O(X) where X ≤ 106
 Expected Space Complexity: O(X) */
 
-class Stack {
-    items = [];
-    push = (element) => this.items.push(element);
-    pop = () => this.items.pop();
-    isempty = () => this.items.length === 0;
-    empty = () => (this.items.length = 0);
-    size = () => this.items.length;
-}
-
 module.exports.factDigit = function (num) {
     const obj = {
         1: 1,
