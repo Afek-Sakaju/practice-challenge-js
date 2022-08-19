@@ -15,29 +15,29 @@ class Stack {
     size = () => this.items.length;
 }
 
-function factorial(n) {
-    if (n === 1) return n;
-
-    return n * factorial(n - 1);
-}
-
 module.exports.factDigit = function (num) {
-    const stack1 = new Stack();
-    stack1.items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const obj = {
+        1: 1,
+        2: 2,
+        3: 6,
+        4: 24,
+        5: 120,
+        6: 720,
+        7: 5040,
+        8: 40320,
+        9: 362880,
+    };
+
     let res = 0;
     let arr = [];
 
-    while (true) {
-        if (stack1.isempty()) return;
-
-        let temp = stack1.pop();
-        let fTemp = factorial(temp);
-
-        if (res + fTemp <= num) {
-            res += fTemp;
-            arr.unshift(temp);
+    for (let i = 9; i > 0; i--) {
+        if (res + obj[i] <= num) {
+            res += obj[i];
+            arr.unshift(i);
+            i++;
             if (res === num) return +arr.join('');
-            else stack1.items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         }
     }
+    return 0;
 };
