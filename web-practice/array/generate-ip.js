@@ -32,4 +32,41 @@ Expected Time Complexity: O(N * N * N * N)
 Expected Auxiliary Space: O(N * N * N * N) */
 
 //module.exports.
-genIp = function () {};
+genIp = function (str) {
+    if (str.length < 4) return -1;
+
+    let i = 0;
+    let strInArr = str.split('');
+    const result = [];
+    const arr = [];
+    const excessCalc = function () {
+        return strInArr.length - (4 - arr.length);
+    };
+
+    while (i <= 4) {
+        let strInArr = str.split('');
+        let j = 0;
+        while (i > j) {
+            arr.push(strInArr.splice(0, 1).join(''));
+            j++;
+        }
+
+        let excessNums = excessCalc();
+        while (strInArr.length > 0) {
+            while (excessNums > 0) {
+                excessNums = excessCalc();
+
+                if (excessNums <= 3) {
+                    arr.push(strInArr.splice(0, excessNums + 1).join(''));
+                } else if (excessNums > 3) {
+                    arr.push(strInArr.splice(0, 4).join(''));
+                }
+            }
+            arr.push(strInArr.splice(0, 1));
+        }
+        result.push(arr.join('.'));
+    }
+    console.log(`res:${result},strArr:${strInArr}`);
+};
+
+genIp('123332');
