@@ -31,42 +31,51 @@ the only argument to the function.
 Expected Time Complexity: O(N * N * N * N)
 Expected Auxiliary Space: O(N * N * N * N) */
 
-//module.exports.
-genIp = function (str) {
+module.exports.genIp = function (str) {
     if (str.length < 4) return -1;
 
     let i = 0;
-    let strInArr = str.split('');
     const result = [];
-    const arr = [];
-    const excessCalc = function () {
-        return strInArr.length - (4 - arr.length);
-    };
 
-    while (i <= 4) {
+    while (i < 4) {
         let strInArr = str.split('');
-        let j = 0;
-        while (i > j) {
+        const arr = [];
+        let j = i;
+
+        while (j--) {
             arr.push(strInArr.splice(0, 1).join(''));
-            j++;
         }
 
-        let excessNums = excessCalc();
-        while (strInArr.length > 0) {
+        let excessNums = strInArr.length - (4 - arr.length);
+
+        if (excessNums === 0 && i === 1) break;
+        // to prevent push of the same string to result
+
+        let numsInRange = true;
+        while (numsInRange) {
             while (excessNums > 0) {
-                excessNums = excessCalc();
-
                 if (excessNums <= 3) {
-                    arr.push(strInArr.splice(0, excessNums + 1).join(''));
+                    let current = strInArr.splice(0, excessNums + 1).join('');
+                    if (current > 255) {
+                        numsInRange = false;
+                        break;
+                    }
+                    arr.push(current);
                 } else if (excessNums > 3) {
-                    arr.push(strInArr.splice(0, 4).join(''));
+                    let current = strInArr.splice(0, 4).join('');
+                    if (current > 255) {
+                        numsInRange = false;
+                        break;
+                    }
+                    arr.push(current);
                 }
+                excessNums = strInArr.length - (4 - arr.length);
             }
-            arr.push(strInArr.splice(0, 1));
+            if (strInArr.length === 0) break;
+            arr.push(strInArr.splice(0, 1)[0]);
         }
-        result.push(arr.join('.'));
+        if (numsInRange) result.push(arr.join('.'));
+        i++;
     }
-    console.log(`res:${result},strArr:${strInArr}`);
+    return result;
 };
-
-genIp('123332');
