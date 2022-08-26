@@ -7,4 +7,10 @@ describe('generate-ip tests', () => {
     ])('function accepts string: %s, than return arr: %s', (str, res) => {
         expect(genIp(str)).toEqual(res);
     });
+    test.each([['111'], ['888999888999'], ['669'], ['55'], ['1'], ['']])(
+        'function accepts string: %s, than returns -1',
+        (str) => {
+            expect(genIp(str)).toBe(-1);
+        }
+    );
 });

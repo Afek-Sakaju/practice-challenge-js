@@ -77,5 +77,6 @@ module.exports.genIp = function (str) {
         if (numsInRange) result.push(arr.join('.'));
         i++;
     }
-    return result;
+
+    return result.length ? result : -1;
 };
