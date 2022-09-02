@@ -2,8 +2,28 @@ const fs = require('fs');
 const path = require('path');
 const recipesList = require('../mocks/RECIPES.mock.json');
 const recipesPath = path.join(__dirname, '..', 'mocks', 'RECIPES.mock.json');
+const mongoose = require('mongoose');
+
+module.exports.getRecipeByNameCtrlOld = (req, res, next) => {
+    const recipeName = req.params.recipeName;
+    const recipe = recipesList.find((r) => r.name === recipeName);
+
+    if (!recipe) return res.status(400).send('recipe has not found');
+
+    res.json(recipe);
+};
 
 module.exports.getRecipeByNameCtrl = (req, res, next) => {
+    async function connectDB() {
+        console.log('connecting to DB');
+        await mongoose.connect('mongodb://127.0.0.1:27017/cook-site');
+
+        if (mongoose.connection.readyState) console.log('connected');
+        else console.log('connection failed');
+    }
+
+    connectDB();
+
     const recipeName = req.params.recipeName;
     const recipe = recipesList.find((r) => r.name === recipeName);
 
