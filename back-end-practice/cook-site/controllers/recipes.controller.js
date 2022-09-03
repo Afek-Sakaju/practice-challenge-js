@@ -1,8 +1,21 @@
 const fs = require('fs');
+const mongoose = require('mongoose');
 const path = require('path');
 const recipesList = require('../mocks/RECIPES.mock.json');
 const recipesPath = path.join(__dirname, '..', 'mocks', 'RECIPES.mock.json');
-const mongoose = require('mongoose');
+const { RecipeModel } = require('../models/recipe.model');
+
+const connectToDB = async function () {
+    console.log('connecting to DB...');
+
+    await mongoose.connect('mongodb://127.0.0.1:27017/cook-site');
+
+    const logMessage = mongoose.connection.readyState
+        ? 'connection success'
+        : 'connection failed';
+
+    console.log(logMessage);
+};
 
 module.exports.getRecipeByNameCtrl = (req, res, next) => {
     const recipeName = req.params.recipeName;
@@ -13,35 +26,20 @@ module.exports.getRecipeByNameCtrl = (req, res, next) => {
     res.json(recipe);
 };
 
-module.exports.createRecipeCtrlOld = (req, res, next) => {
-    async function connectDB() {
-        console.log('connecting to DB');
-        await mongoose.connect('mongodb://127.0.0.1:27017/cook-site');
-
-        if (mongoose.connection.readyState) console.log('connected');
-        else console.log('connection failed');
-    }
-
-    connectDB().then(async () => {
-        const { RecipeModel } = require('../models/recipe.model');
-
-        const newRecipe = {
-            name: req.body.name,
-            ingredients: req.body.ingredients,
-            cookingTime: req.body.cookingTime,
-            difficulityLevel: req.body.difficulityLevel,
-        };
-
-        await RecipeModel.collection.insertOne(newRecipe);
-    });
-
-    /* async () => {
-        const temp = await Post.findOne(); //or: New Post()
-
-        temp.name = 'new name';
-
-        await temp.save();
-    };*/
+module.exports.createRecipeCtrl = (req, res, next) => {
+    connectToDB()
+        .then(async () => {
+            return new RecipeModel({
+                name: req.body.name,
+                ingredients: req.body.ingredients,
+                cookingTime: req.body.cookingTime,
+                difficulityLevel: req.body.difficulityLevel,
+            }).save();
+        })
+        .then(() => {
+            console.log('recipe created in DB');
+            res.sendStatus(201);
+        });
 };
 
 module.exports.deleteRecipeCtrl = (req, res, next) => {
@@ -59,6 +57,7 @@ module.exports.deleteRecipeCtrl = (req, res, next) => {
     });
 
     res.sendStatus(200);
+    //RecipeModel.collection.deleteOne({ name: 'green-salad' });
 };
 
 module.exports.sendAllRecipesCtrl = (req, res, next) => {
@@ -91,7 +90,7 @@ module.exports.filteredRecipeListCtrl = (req, res, next) => {
     res.json(filteredlist);
 };
 
-module.exports.createRecipeCtrl = async function (req, res, next) {
+module.exports.createRecipeCtrlOld = async function (req, res, next) {
     const newRecipe = {
         name: req.body.name,
         ingredients: req.body.ingredients,

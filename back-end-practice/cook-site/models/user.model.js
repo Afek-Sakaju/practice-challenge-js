@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const userSchema = new Schema(
     {
         id: {
@@ -7,6 +10,7 @@ const userSchema = new Schema(
         email: {
             type: String,
             required: [true, 'missing email'],
+            unique: true,
             validate: {
                 validator: function (email) {
                     const emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -14,7 +18,6 @@ const userSchema = new Schema(
                 },
                 message: 'Enter a valid email',
             },
-            default: 'anonymous',
         },
         password: {
             type: String,
@@ -28,3 +31,5 @@ const userSchema = new Schema(
     },
     { timestamps: true }
 );
+
+module.exports.UserModel = mongoose.model('user', userSchema);
