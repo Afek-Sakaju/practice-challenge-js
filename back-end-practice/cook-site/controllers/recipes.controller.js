@@ -18,7 +18,20 @@ const connectToDB = async function () {
 };
 
 module.exports.getRecipeByNameCtrl = (req, res, next) => {
+    connectToDB().then(async () => {
+        const recipeName = req.params.recipeName;
+
+        const recipe = await RecipeModel.findOne({
+            name: recipeName,
+        }).exec();
+        res.status(200).json(recipe);
+        console.log('recipe found by name');
+    });
+};
+
+module.exports.getRecipeByNameCtrlOld = (req, res, next) => {
     const recipeName = req.params.recipeName;
+
     const recipe = recipesList.find((r) => r.name === recipeName);
 
     if (!recipe) return res.status(400).send('recipe has not found');
