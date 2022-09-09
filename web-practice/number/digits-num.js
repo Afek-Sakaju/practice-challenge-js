@@ -27,17 +27,17 @@ Expected Time Complexity: O(N)
 Expected Space Complexity: O(N) */
 
 module.exports.digitsNum = function (num) {
-    return rec(num * 10);
+    if (num <= 0) return null;
 
-    function rec(xTenNum) {
-        let arr = JSON.stringify(xTenNum).split('');
-        let sumOfDigits = arr.reduce((total, n) => {
-            return (total += +n);
-        }, 0);
+    let digits = [1];
+    let sum = 1;
 
-        if (sumOfDigits === num) return num;
-        else if (+arr[arr.length - 1] !== 0) {
-            return rec(xTenNum * 10);
-        } else return false;
+    while (sum !== num) {
+        if (digits[0] === 9) digits.unshift(1);
+        else digits[0]++;
+
+        sum++;
     }
+
+    return +digits.join('') * Math.pow(10, num);
 };
