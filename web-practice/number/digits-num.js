@@ -33,10 +33,17 @@ module.exports.digitsNum = function (num) {
     let sum = 1;
 
     while (sum !== num) {
-        if (digits[0] === 9) digits.unshift(1);
-        else digits[0]++;
+        // just to make the code quicker
+        // in case num too high
+        if (num - sum > 9) {
+            sum += 9;
+            digits.push(9);
+        } else {
+            if (digits[0] === 9) digits.unshift(1);
+            else digits[0]++;
 
-        sum++;
+            sum++;
+        }
     }
 
     return +digits.join('') * Math.pow(10, num);
