@@ -3,11 +3,15 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 const passport = require('passport');
+const { connectDB } = require('./DB/mongoose');
 
+const url = 'mongodb://127.0.0.1:27017/cook-site';
 const mainRouter = require('./routers/main.router');
 const authRouter = require('./routers/auth.router');
 const recipesRouter = require('./routers/recipes.router');
 require('./config/passport-config');
+
+connectDB(url);
 
 const app = express();
 
