@@ -8,8 +8,22 @@ module.exports.findRecipeByName = async (recipeName) => {
     return recipe;
 };
 
+module.exports.findAllRecipe = async () => {
+    return RecipeModel.find({});
+};
+
 module.exports.createRecipe = async (recipe) => {
-    return new RecipeModel(recipe).save();
+    // fix this when you create existing recipe error
+    await new RecipeModel(recipe)
+        .save()
+        .then(() => {
+            console.log('recipe created in DB');
+            return 201;
+        })
+        .catch((err) => {
+            console.log(`recipe creation failed, error: ${err}`);
+            return 400;
+        });
 };
 
 module.exports.deleteRecipe = async function (recipeName) {

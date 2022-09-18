@@ -1,6 +1,8 @@
 const {
     createRecipe,
     findRecipeByName,
+    deleteRecipe,
+    findAllRecipe,
 } = require('../services/recipes.service');
 
 module.exports.getRecipeByNameCtrl = (req, res, next) => {
@@ -11,15 +13,14 @@ module.exports.getRecipeByNameCtrl = (req, res, next) => {
 };
 
 module.exports.createRecipeCtrl = (req, res, next) => {
-    createRecipe({
+    const statues = createRecipe({
         name: req.body.name,
         ingredients: req.body.ingredients,
         cookingTime: req.body.cookingTime,
         difficulityLevel: req.body.difficulityLevel,
     });
 
-    res.sendStatus(201);
-    console.log('recipe created in DB');
+    res.sendStatus(statues);
 };
 
 module.exports.deleteRecipeByNameCtrl = (req, res, next) => {
@@ -47,7 +48,7 @@ module.exports.deleteRecipeCtrlOld = (req, res, next) => {
 };
 
 module.exports.sendAllRecipesCtrl = (req, res, next) => {
-    res.json(recipesList);
+    res.json(findAllRecipe());
 };
 
 module.exports.filteredRecipeListCtrl = (req, res, next) => {

@@ -1,7 +1,7 @@
 const express = require('express');
 const {
     getRecipeByNameCtrl,
-    deleteRecipeCtrl,
+    deleteRecipeByNameCtrl,
     sendAllRecipesCtrl,
     filteredRecipeListCtrl,
     createRecipeCtrl,
@@ -19,6 +19,6 @@ router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
 router
     .route('/:recipeName')
     .get(getRecipeByNameCtrl)
-    .delete(isAuthenticatedMW, deleteRecipeCtrl);
+    .delete(isAuthenticatedMW, deleteRecipeByNameCtrl);
 
 module.exports = router;
