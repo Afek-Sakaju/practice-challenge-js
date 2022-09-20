@@ -101,4 +101,4 @@ const sarah = new PoliceOfficer('sarah', 31, 'nuriel', bDay);
 
 console.log(sarah.skill);
 sarah.updateSkill();
-console.log(sarah.fightAlien(2, 3));
+console.log(JSON.stringify(sarah.fightAlien(2, 3)));
