@@ -53,13 +53,17 @@ class PoliceOfficer {
         this._skill = this.age > 21 ? this._age - 21 : 0;
     }
 
+    updateAge() {
+        this._age = new Date().getFullYear() - bDay.getFullYear();
+    }
+
     skillShout() {
         console.log(
             `my name is ${this._name} \n and my skill level is ${this._skill}!!!`
         );
     }
 
-    fightAliens(aliensSkill: number, aliensCount: number): Object | string {
+    fightAliens(alienSkill: number): Object | string {
         if (this._age <= 21) return 'too young to fight';
 
         const fightLog = {
@@ -68,22 +72,21 @@ class PoliceOfficer {
             time: new Date().toDateString(),
         };
 
-        if (this._skill > aliensSkill) {
-            fightLog.skillDifference = this._skill - aliensSkill * aliensCount;
-            fightLog.winner = this._name;
-        } else if (this._skill < aliensSkill) {
-            fightLog.skillDifference = aliensSkill * aliensCount - this._skill;
-            fightLog.winner = 'aliens';
-        } else {
-            fightLog.skillDifference = 0;
-            fightLog.winner = 'its a tie';
+        switch (true) {
+            case this._skill > alienSkill:
+                fightLog.skillDifference = this._skill - alienSkill;
+                fightLog.winner = this._name;
+                break;
+            case this._skill < alienSkill:
+                fightLog.skillDifference = alienSkill - this._skill;
+                fightLog.winner = 'aliens';
+                break;
+            default:
+                fightLog.skillDifference = 0;
+                fightLog.winner = 'its a tie';
         }
 
         return fightLog;
-    }
-
-    static whatsForBreakfast() {
-        return 'sugar donuts !!';
     }
 }
 
