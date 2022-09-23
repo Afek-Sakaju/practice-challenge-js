@@ -1,0 +1,6 @@
+{
+    "watch": "for-fun-!/police-officer.ts",
+    "execMap": {
+        "ts": "ts-node"
+    }
+}
