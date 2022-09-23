@@ -1,59 +1,51 @@
 class PoliceOfficer {
-    constructor(name, age, crush, birthday) {
+    private _name: string;
+    private _age: number;
+    private _favFood: string;
+    private _birthday: Date;
+    private _skill: number;
+
+    constructor(name: string, age: number, birthday: Date) {
         this._name = name;
         this._age = age;
         this._favFood = 'dunkin-donuts';
-        this._crush = crush ?? 'Anna the new crew manager';
-        this._gunAllowed = age > 21 ? true : false;
         this._birthday = birthday;
         this._skill = age > 21 ? age - 21 : 0;
     }
 
-    get name() {
+    get name(): string {
         return this._name;
     }
 
-    get age() {
+    get age(): number {
         return this._age;
     }
 
-    get favFood() {
+    get favFood(): string {
         return this._favFood;
     }
 
-    get crush() {
-        return this._crush;
-    }
-
-    get gunAllowed() {
-        return this._gunAllowed;
-    }
-
-    get birthday() {
+    get birthday(): string {
         return this._birthday.toDateString();
     }
 
-    get skill() {
+    get skill(): number {
         return this._skill;
     }
 
-    set setName(name) {
+    set setName(name: string) {
         this._name = name;
     }
 
-    set setAge(num) {
+    set setAge(num: number) {
         this._age = num;
     }
 
-    set setFavFood(food) {
+    set setFavFood(food: string) {
         this._favFood = food;
     }
 
-    set setCrush(crushName) {
-        this._crush = crushName;
-    }
-
-    set setBirthDay(newDate) {
+    set setBirthDay(newDate: Date) {
         this._birthday = newDate;
     }
 
@@ -61,15 +53,14 @@ class PoliceOfficer {
         this._skill = this.age > 21 ? this._age - 21 : 0;
     }
 
-    allowGun() {
-        if (this._age <= 21) return false;
-
-        this._gunAllowed = true;
-        return true;
+    skillShout() {
+        console.log(
+            `my name is ${this._name} \n and my skill level is ${this._skill}!!!`
+        );
     }
 
-    fightAlien(aliensSkill, aliensCount) {
-        if (this._gunAllowed === false) return "can't fight without a gun!";
+    fightAliens(aliensSkill: number, aliensCount: number): Object | string {
+        if (this._age <= 21) return 'too young to fight';
 
         const fightLog = {
             skillDifference: 0,
@@ -79,13 +70,13 @@ class PoliceOfficer {
 
         if (this._skill > aliensSkill) {
             fightLog.skillDifference = this._skill - aliensSkill * aliensCount;
-            fightLog.winner = 'police-officer';
-        } else if (this._skill < alienSkill) {
+            fightLog.winner = this._name;
+        } else if (this._skill < aliensSkill) {
             fightLog.skillDifference = aliensSkill * aliensCount - this._skill;
             fightLog.winner = 'aliens';
         } else {
             fightLog.skillDifference = 0;
-            fightLog.winner = 'its a tie, all of them lost consciousness';
+            fightLog.winner = 'its a tie';
         }
 
         return fightLog;
@@ -96,9 +87,9 @@ class PoliceOfficer {
     }
 }
 
-const bDay = new Date('2000', '09', '29');
-const sarah = new PoliceOfficer('sarah', 31, 'nuriel', bDay);
+const bDay = new Date(2000, 09, 29);
+const sarah = new PoliceOfficer('sarah', 31, bDay);
 
-console.log(sarah.skill);
-sarah.updateSkill();
-console.log(JSON.stringify(sarah.fightAlien(2, 3)));
+sarah.skillShout();
+const newSkillShout = sarah.skillShout.bind({ _skill: 15, _name: 'hanna' });
+newSkillShout();
