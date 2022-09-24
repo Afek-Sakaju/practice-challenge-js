@@ -14,16 +14,9 @@ module.exports.findAllRecipe = async () => {
 
 module.exports.createRecipe = async (recipe) => {
     // fix this when you create existing recipe error
-    await new RecipeModel(recipe)
-        .save()
-        .then(() => {
-            console.log('recipe created in DB');
-            return 201;
-        })
-        .catch((err) => {
-            console.log(`recipe creation failed, error: ${err}`);
-            return 400;
-        });
+    const result = await new RecipeModel(recipe).save();
+
+    return result;
 };
 
 module.exports.deleteRecipe = async function (recipeName) {

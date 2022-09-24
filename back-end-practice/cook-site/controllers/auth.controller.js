@@ -5,6 +5,6 @@ module.exports.loginRedirectCtrl = passport.authenticate('local', {
     failureRedirect: '/e404.html',
 });
 
-module.exports.successLoginCtrl = function (req, res, next) {
-    res.send('you are logged in successfuly');
+module.exports.homePageCtrl = function (req, res, next) {
+    res.redirect('home.jpg');
 };

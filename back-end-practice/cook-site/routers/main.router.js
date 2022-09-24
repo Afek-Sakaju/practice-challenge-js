@@ -7,7 +7,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/health', (req, res, next) => {
-    res.send('server is alive');
+    res.redirect('https://youtu.be/t2NgsJrrAyM?t=101');
 });
 
 module.exports = router;

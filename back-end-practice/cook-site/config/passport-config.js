@@ -1,25 +1,30 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const userList = require('../mocks/USERS.mock.json');
+const { UserModel } = require('../models/user.model');
+const bcrypt = require('bcrypt');
 
 passport.use(
-    new LocalStrategy((username, password, done) => {
-        const user = userList.find((u) => u.username === username);
+    new LocalStrategy(async (givenUsername, password, done) => {
+        const user = await UserModel.findOne({ username: givenUsername });
 
         if (!user) return done('user not found', null);
 
-        if (user.password !== password) return done('wrong password', null);
+        const matchedPassword = await bcrypt.compare(password, user.password);
+
+        if (!matchedPassword) {
+            return done('user not match password', null);
+        }
 
         done(null, user);
     })
 );
 
 passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user._id);
 });
 
 passport.deserializeUser((id, done) => {
-    const user = userList.find((u) => u.id === id);
+    const user = UserModel.findById(id);
     if (!user) done('user not found', null);
     else done(null, user);
 });

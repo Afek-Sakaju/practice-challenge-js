@@ -1,15 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
     {
-        id: {
-            type: String,
-            unique: true,
-        },
         email: {
             type: String,
-            required: [true, 'missing email'],
+            required: true,
             unique: true,
             validate: {
                 validator: function (email) {
@@ -31,5 +28,16 @@ const userSchema = new Schema(
     },
     { timestamps: true }
 );
+
+userSchema.pre('save', async function (done) {
+    if (this.isModified('password')) {
+        const salt = bcrypt.genSaltSync(10); // 10 = saltRounds
+        const plaintextPassword = this.password;
+        const hashed = bcrypt.hashSync(plaintextPassword, salt);
+
+        this.password = hashed;
+    }
+    done();
+});
 
 module.exports.UserModel = mongoose.model('user', userSchema);

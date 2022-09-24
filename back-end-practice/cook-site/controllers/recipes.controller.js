@@ -3,7 +3,7 @@ const {
     findRecipeByName,
     deleteRecipe,
     findAllRecipe,
-} = require('../services/recipes.service');
+} = require('../services/recipes.services');
 
 module.exports.getRecipeByNameCtrl = (req, res, next) => {
     const recipe = findRecipeByName(req.params.recipeName);
@@ -13,14 +13,16 @@ module.exports.getRecipeByNameCtrl = (req, res, next) => {
 };
 
 module.exports.createRecipeCtrl = (req, res, next) => {
-    const statues = createRecipe({
+    const recipe = {
         name: req.body.name,
+        cookingTime: req.body.cookingTime,
         ingredients: req.body.ingredients,
         cookingTime: req.body.cookingTime,
         difficulityLevel: req.body.difficulityLevel,
-    });
+    };
 
-    res.sendStatus(statues);
+    const result = createRecipe(recipe);
+    res.sendStatus(result ? 200 : 400);
 };
 
 module.exports.deleteRecipeByNameCtrl = (req, res, next) => {
