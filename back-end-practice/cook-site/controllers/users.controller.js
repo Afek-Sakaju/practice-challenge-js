@@ -14,11 +14,13 @@ module.exports.registerUserCtrl = async (req, res, next) => {
 
 module.exports.updateUserDataCtrl = async (req, res, next) => {
     const userData = {
+        _id: req.body._id,
         password: req.body.password,
         phoneNumber: req.body.phoneNumber,
         fullName: req.body.fullName,
     };
-
+    //fix me
     const result = await updateUserData(userData);
-    res.status(200).json(result);
+
+    res.json(result);
 };

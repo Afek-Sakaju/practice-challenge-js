@@ -11,15 +11,16 @@ module.exports.registerUser = async (user) => {
 
 module.exports.updateUserData = async (data) => {
     const result = await UserModel.findOneAndUpdate(
-        { _id: data.id },
+        { _id: data._id },
         {
             password: data.password
                 ? bcrypt.hashSync(data.password, bcrypt.genSaltSync(10))
                 : password,
         },
-        { fullName: data.fullName ? data.fullName : fullName },
-        { phoneNumber: data.phoneNumber ? data.phoneNumber : phoneNumber }
+        {
+            returnOriginal: false,
+        }
     );
 
-    return result.toJSON();
+    return result;
 };
