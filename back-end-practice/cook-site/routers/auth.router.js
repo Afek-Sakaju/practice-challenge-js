@@ -1,14 +1,27 @@
 const express = require('express');
+const passport = require('passport');
 const {
-    loginRedirectCtrl,
-    homePageCtrl,
-} = require('../controllers/auth.controller');
+    registerUserCtrl,
+    updateUserDataCtrl,
+} = require('../controllers/users.controller');
 const { isAuthenticatedMW } = require('../middleware/auth-middleware');
 
 const router = express.Router();
 
-router.post('/login', loginRedirectCtrl);
+router.post(
+    '/login',
+    passport.authenticate('local', {
+        successRedirect: '/auth/success',
+        failureRedirect: '/e404.html',
+    })
+);
 
-router.get('/success', isAuthenticatedMW, homePageCtrl);
+router.get('/success', isAuthenticatedMW, (req, res, next) => {
+    res.redirect('home.jpg');
+});
+
+router.post('/register', registerUserCtrl);
+
+router.put('/update', updateUserDataCtrl);
 
 module.exports = router;

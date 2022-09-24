@@ -4,8 +4,8 @@ const { UserModel } = require('../models/user.model');
 const bcrypt = require('bcrypt');
 
 passport.use(
-    new LocalStrategy(async (givenUsername, password, done) => {
-        const user = await UserModel.findOne({ username: givenUsername });
+    new LocalStrategy(async (givenEmail, password, done) => {
+        const user = await UserModel.findOne({ email: givenEmail });
 
         if (!user) return done('user not found', null);
 
