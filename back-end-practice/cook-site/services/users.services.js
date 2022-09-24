@@ -17,9 +17,12 @@ module.exports.updateUserData = async (data) => {
                 ? bcrypt.hashSync(data.password, bcrypt.genSaltSync(10))
                 : password,
         },
+        { fullName: data.fullName ? data.fullName : fullName },
+        { phoneNumber: data.phoneNumber ? data.phoneNumber : phoneNumber },
         {
             returnOriginal: false,
         }
+        //fix me
     );
 
     return result;
