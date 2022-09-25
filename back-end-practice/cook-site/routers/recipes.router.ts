@@ -1,12 +1,12 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
     getRecipeByNameCtrl,
     deleteRecipeByNameCtrl,
     sendAllRecipesCtrl,
     filteredRecipeListCtrl,
     createRecipeCtrl,
-} = require('../controllers/recipes.controller');
-const { isAuthenticatedMW } = require('../middleware/auth-middleware');
+} from '../controllers/recipes.controller';
+import { isAuthenticatedMW } from '../middleware/auth-middleware';
 
 const router = express.Router();
 
@@ -21,4 +21,4 @@ router
     .get(getRecipeByNameCtrl)
     .delete(isAuthenticatedMW, deleteRecipeByNameCtrl);
 
-module.exports = router;
+export default router;
