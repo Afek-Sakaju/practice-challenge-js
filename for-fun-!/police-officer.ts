@@ -90,11 +90,11 @@ class PoliceOfficer {
     }
 }
 
-const bDay = new Date(2000, 09, 29);
+const bDay = new Date(2000, 9, 29);
 const sarah = new PoliceOfficer('sarah', 31, bDay);
 
 sarah.skillShout();
 const dani = sarah.skillShout.bind({ _skill: 20, _name: 'arir' });
-const newSkillShout = sarah.skillShout.bind({ _skill: 15, _name: 'hanna' });
+const newSkillShout = sarah.skillShout.bind({ _skill: 30, _name: 'hanna' });
 newSkillShout();
 dani();

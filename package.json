@@ -5,6 +5,7 @@
     "scripts": {
         "start": "nodemon for-fun-!/police-officer.ts",
         "dev": "nodemon back-end-practice/cook-site/app.js",
+        "build:watch": "tsc -w",
         "jest-init": "jest --init",
         "test": "jest"
     },
