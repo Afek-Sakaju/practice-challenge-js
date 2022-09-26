@@ -1,6 +1,6 @@
 {
     "ts-node": { "files": true },
-    "files": ["for-fun-!/police-officer.ts"],
+    "files": ["cook-site/app.ts"],
     "compilerOptions": {
         /* Visit https://aka.ms/tsconfig to read more about this file */
 

@@ -10,21 +10,30 @@ export async function registerUser(user: IUser): Promise<IUser | undefined> {
     return result.toJSON();
 }
 
-export async function updateUserData(data: IUser): Promise<IUser | undefined> {
+export async function updateUserData(
+    userData: IUser
+): Promise<IUser | undefined> {
+    if (userData.password !== undefined) {
+        const salt = bcrypt.genSaltSync(10);
+        userData.password = bcrypt.hashSync(userData.password, salt);
+    }
+
     const result: any = await UserModel.findOneAndUpdate(
-        { _id: data._id },
+        { _id: userData._id },
         {
-            password: data.password
-                ? bcrypt.hashSync(data.password, bcrypt.genSaltSync(10))
-                : password,
+            email: userData.email,
+            password: userData.password,
+            phoneNumber: userData.phoneNumber,
+            fullName: userData.fullName,
         },
-        ...(data.fullName!==undefined && fullName:data.fullName),
-        { phoneNumber: data.phoneNumber ? data.phoneNumber : phoneNumber },
-        {
-            returnOriginal: false,
-        }
-        //fix me
+        { new: true, omitUndefined: true }
     );
 
     return result;
+}
+
+export async function findUserByEmail(userEmail: string) {
+    const userDoc = await UserModel.findOne({ email: userEmail });
+
+    return userDoc;
 }

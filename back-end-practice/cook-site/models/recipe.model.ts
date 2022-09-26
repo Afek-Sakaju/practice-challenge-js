@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema(
@@ -11,11 +11,11 @@ const recipeSchema = new Schema(
         creator: {
             type: String,
             default: 'anonymous',
-        },
+        }, //todo : change to id
         ingredients: {
             type: String,
             required: [true, 'missing ingredients to the recipe'],
-        },
+        }, //todo : change to array of strings (string[])
         cookingTime: {
             type: String,
             required: [true, 'you forgot to mention the cooking time!'],
@@ -25,4 +25,4 @@ const recipeSchema = new Schema(
     { timestamps: true }
 );
 
-module.exports.RecipeModel = mongoose.model('recipe', recipeSchema);
+export const RecipeModel = mongoose.model('recipe', recipeSchema);

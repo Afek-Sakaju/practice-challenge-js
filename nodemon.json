@@ -1,5 +1,5 @@
 {
-    "watch": "for-fun-!/police-officer.ts",
+    "watch": "back-end-practice/cook-site/**/*.ts",
     "execMap": {
         "ts": "ts-node"
     }
