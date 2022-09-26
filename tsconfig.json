@@ -1,6 +1,6 @@
 {
     "ts-node": { "files": true },
-    "files": ["cook-site/app.ts"],
+    "files": ["back-end-practice/cook-site/app.ts"],
     "compilerOptions": {
         /* Visit https://aka.ms/tsconfig to read more about this file */
 

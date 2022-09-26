@@ -1,6 +1,7 @@
-const { RecipeModel } = require('../models/recipe.model');
+import { RecipeModel } from '../models/recipe.model';
+import { IRecipe } from '../interfaces/recipe.interface';
 
-module.exports.findRecipeByName = async (recipeName) => {
+export const findRecipeByName = async (recipeName: string) => {
     const recipe = await RecipeModel.findOne({
         name: recipeName,
     }).exec();
@@ -8,18 +9,18 @@ module.exports.findRecipeByName = async (recipeName) => {
     return recipe;
 };
 
-module.exports.findAllRecipe = async () => {
-    return RecipeModel.find({});
+export const findAllRecipe = async () => {
+    return await RecipeModel.find({});
 };
 
-module.exports.createRecipe = async (recipe) => {
+export const createRecipe = async (recipe: IRecipe) => {
     // fix this when you create existing recipe error
     const result = await new RecipeModel(recipe).save();
 
     return result;
 };
 
-module.exports.deleteRecipe = async function (recipeName) {
+export const deleteRecipe = async function (recipeName: string) {
     const { deletedCount } = await RecipeModel.deleteOne({
         name: recipeName,
     });

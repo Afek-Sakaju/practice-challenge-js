@@ -56,7 +56,8 @@ export const sendAllRecipesCtrl = async (
     res.json(allRecipes);
 };
 
-export const filteredRecipeListCtrlOld = async (
+//@ts-ignore
+export const filteredRecipeListCtrl = async (
     req: Request,
     res: Response,
     _next: NextFunction
@@ -65,7 +66,7 @@ export const filteredRecipeListCtrlOld = async (
     //{name: 'spaghetti', difficulityLevel: 'easy'}
 
     const { name, ingredients, cookingTime, difficulityLevel } = req.query;
-
+    //@ts-ignore
     const filteredlist = recipesList.filter((recipe) => {
         if (name !== undefined && recipe.name !== name) return false;
         if (ingredients !== undefined && recipe.ingredients !== ingredients) {
