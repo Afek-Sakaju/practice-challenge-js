@@ -21,7 +21,7 @@ router.get(
     '/success',
     isAuthenticatedMW,
     (req: Request, res: Response, next: NextFunction) => {
-        res.redirect('home.jpg');
+        res.send('success');
     }
 );
 
