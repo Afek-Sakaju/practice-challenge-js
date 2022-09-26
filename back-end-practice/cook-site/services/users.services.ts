@@ -26,7 +26,7 @@ export async function updateUserData(
             phoneNumber: userData.phoneNumber,
             fullName: userData.fullName,
         },
-        { new: true, omitUndefined: true }
+        { new: true, omitUndefined: true, upsert: true }
     );
 
     return result;
