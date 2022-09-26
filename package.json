@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "nodemon for-fun-!/police-officer.ts",
+        "start": "nodemon back-end-practice/cook-site/app.ts",
         "dev": "nodemon back-end-practice/cook-site/app.js",
         "build:watch": "tsc -w",
         "jest-init": "jest --init",

@@ -15,7 +15,9 @@ export const findAllRecipe = async () => {
 
 export const createRecipe = async (recipe: IRecipe) => {
     // fix this when you create existing recipe error
-    const result = await new RecipeModel(recipe).save();
+    const result = await new RecipeModel(recipe).save().catch((err: Error) => {
+        console.log(err);
+    });
 
     return result;
 };
