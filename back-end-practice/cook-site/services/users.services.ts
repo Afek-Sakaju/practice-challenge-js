@@ -32,8 +32,18 @@ export async function updateUserData(
     return result;
 }
 
+export async function getUserPasswordByEmail(
+    mail: string
+): Promise<IUser | undefined> {
+    const userDoc: any = await UserModel.findOne({ email: mail }).select(
+        'email password'
+    );
+
+    return userDoc as unknown as IUser | undefined;
+}
+
 export async function findUserByEmail(userEmail: string) {
     const userDoc = await UserModel.findOne({ email: userEmail });
 
-    return userDoc;
+    return userDoc as unknown as IUser | undefined;
 }

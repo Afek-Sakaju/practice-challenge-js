@@ -8,8 +8,8 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import passport from 'passport';
-
 import './config/passport-config';
+
 import mainRouter from './routers/main.router';
 import authRouter from './routers/auth.router';
 import recipesRouter from './routers/recipes.router';
@@ -24,8 +24,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, '.', 'public')));
-
 app.use(
     session({
         secret: 'shalom!',
@@ -35,11 +33,10 @@ app.use(
     })
 );
 
+app.use(express.static(path.join(__dirname, '.', 'public')));
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', mainRouter);
 app.use('/auth', authRouter);
