@@ -6,6 +6,7 @@ import {
     findRecipeByName,
     deleteRecipe,
     findAllRecipe,
+    filterRecipes,
 } from '../services/recipes.services';
 
 export const getRecipeByNameCtrl = async (
@@ -56,33 +57,12 @@ export const sendAllRecipesCtrl = async (
     res.json(allRecipes);
 };
 
-//@ts-ignore
 export const filteredRecipeListCtrl = async (
     req: Request,
     res: Response,
     _next: NextFunction
 ) => {
-    //to do :aggregate
-    //{name: 'spaghetti', difficulityLevel: 'easy'}
+    const filteredList = await filterRecipes(req.query);
 
-    const { name, ingredients, cookingTime, difficulityLevel } = req.query;
-    //@ts-ignore
-    const filteredlist = recipesList.filter((recipe) => {
-        if (name !== undefined && recipe.name !== name) return false;
-        if (ingredients !== undefined && recipe.ingredients !== ingredients) {
-            return false;
-        }
-        if (cookingTime !== undefined && recipe.cookingTime !== cookingTime) {
-            return false;
-        }
-        if (
-            difficulityLevel !== undefined &&
-            recipe.difficulityLevel !== difficulityLevel
-        ) {
-            return false;
-        }
-        return true;
-    });
-
-    res.json(filteredlist);
+    res.json(filteredList);
 };

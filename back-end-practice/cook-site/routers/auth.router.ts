@@ -12,21 +12,21 @@ const router = express.Router();
 router.post(
     '/login',
     passport.authenticate('local', {
-        successRedirect: '/auth/success',
-        failureRedirect: '/e404.html',
+        successRedirect: '/health',
+        failureRedirect: '/recipe/green-salad',
     })
 );
 
-router.get(
+/*router.get(
     '/success',
     isAuthenticatedMW,
     (req: Request, res: Response, next: NextFunction) => {
         res.send('success');
     }
-);
+);*/
 
 router.post('/register', registerUserCtrl);
 
-router.put('/update', updateUserDataCtrl);
+router.put('/update', isAuthenticatedMW, updateUserDataCtrl);
 
 export default router;

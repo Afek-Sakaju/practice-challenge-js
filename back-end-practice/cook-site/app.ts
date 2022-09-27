@@ -49,7 +49,7 @@ app.use(
     (
         err: ErrorRequestHandler,
         req: Request,
-        res: Response,
+        _res: Response,
         next: NextFunction
     ) => {
         console.error(

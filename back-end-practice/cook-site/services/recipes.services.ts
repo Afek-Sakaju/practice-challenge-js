@@ -1,5 +1,5 @@
 import { RecipeModel } from '../models/recipe.model';
-import { IRecipe } from '../interfaces/recipe.interface';
+import { IRecipe, IRecipeQuery } from '../interfaces/recipe.interface';
 
 export const findRecipeByName = async (recipeName: string) => {
     const recipe = await RecipeModel.findOne({
@@ -20,6 +20,39 @@ export const createRecipe = async (recipe: IRecipe) => {
     });
 
     return result;
+};
+
+export const filterRecipes = async (query: IRecipeQuery) => {
+    const { name, creator, difficulityLevel } = query;
+
+    const filteredRecipes = await RecipeModel.aggregate([
+        {
+            $match: {
+                ...(name !== undefined && {
+                    name: {
+                        $regex: name,
+                        $options: 'i',
+                    },
+                }),
+                ...(creator !== undefined && {
+                    creator: creator,
+                }),
+                ...(difficulityLevel !== undefined && {
+                    difficulityLevel: difficulityLevel,
+                }),
+            },
+        },
+        {
+            $project: {
+                recipeName: '$name', // destruction
+                ingredients: 1,
+                cookingTime: 1,
+                difficulityLevel: 1,
+            },
+        },
+    ]);
+
+    return filteredRecipes;
 };
 
 export const deleteRecipe = async function (recipeName: string) {

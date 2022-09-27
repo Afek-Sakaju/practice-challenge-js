@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get('/all', isAuthenticatedMW, sendAllRecipesCtrl);
 
-router.get('/', filteredRecipeListCtrl); //(by query string)
+router.get('/', isAuthenticatedMW, filteredRecipeListCtrl); //(by query string)
 
 router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
 
