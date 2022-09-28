@@ -2,10 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/user.model';
-import {
-    findUserByEmail,
-    getUserPasswordByEmail,
-} from '../services/users.services';
+import { getUserPasswordByEmail } from '../services/users.services';
 import { IUser, passportConfigUser } from '../interfaces/user.interface';
 
 passport.use(

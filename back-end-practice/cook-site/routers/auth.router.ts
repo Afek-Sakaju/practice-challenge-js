@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
 
 import {
@@ -12,18 +12,18 @@ const router = express.Router();
 router.post(
     '/login',
     passport.authenticate('local', {
-        successRedirect: '/health',
+        successRedirect: '/success',
         failureRedirect: '/recipe/green-salad',
     })
 );
 
-/*router.get(
+router.get(
     '/success',
     isAuthenticatedMW,
     (req: Request, res: Response, next: NextFunction) => {
         res.send('success');
     }
-);*/
+);
 
 router.post('/register', registerUserCtrl);
 
