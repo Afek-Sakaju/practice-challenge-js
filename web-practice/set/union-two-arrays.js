@@ -18,4 +18,5 @@ module.exports.doUnion = function (arr1, arr2) {
     }
     return uniqueOnly.size;
 };
+
 //the key here to the solution is to use Set

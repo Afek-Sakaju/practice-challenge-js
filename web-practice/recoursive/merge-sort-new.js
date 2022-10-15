@@ -28,4 +28,4 @@ function merge(arr1, arr2) {
     return sortedArray;
 }
 
-console.log(mergeSort([1, 2, 3, 4, 111, 4, 3, 22, 3]));
+console.log(mergeSort([1, 2, 3, 4, -111, 4, 3, 22, 3]));
