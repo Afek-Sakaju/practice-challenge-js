@@ -35,23 +35,38 @@ if (false) {
     const boundFunction = officer1sarah.printName.bind(officer2david);
 
     boundFunction();
-
-    const arr1 = [1, 2, 3, 4];
-
-    console.log(arr1);
-
-    const arr2 = arr1.map((a) => {
-        return a * 100;
-    });
-
-    console.log(arr2);
 }
 
-const stock = {
-    name: 'apple',
-    price: 55,
-    symbole: 'apl',
-};
+class Stack {
+    items = [];
+    push = (element) => this.items.push(element);
+    pop = () => this.items.pop();
+    isEmpty = () => this.items.length === 0;
+    empty = () => (this.items.length = 0);
+    size = () => this.items.length;
+}
 
-const newStock = { ...stock};
-console.log(JSON.stringify(newStock));
+class Queue {
+    items = [];
+    enqueue = (element) => this.items.unshift(element);
+    dequeue = () => this.items.pop();
+    isEmpty = () => this.items.length === 0;
+    empty = () => (this.items.length = 0);
+    size = () => this.items.length;
+}
+
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+class Item {
+    //linkedList
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
