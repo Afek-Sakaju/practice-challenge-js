@@ -70,3 +70,5 @@ class Item {
         this.next = null;
     }
 }
+
+console.log('bc'.localeCompare('bc'));

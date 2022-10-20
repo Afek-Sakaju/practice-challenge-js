@@ -10,22 +10,11 @@ function sortObjectList(list, field, orderType) {
 
     switch (true) {
         case fieldType === 'string':
-            list.sort((a, b) => {
-                const string1 = a[field].toString();
-                const string2 = b[field].toString();
-                return orderType === 1
-                    ? string1.localCompare(string2)
-                    : string2.localCompare(string1);
-            });
+            list.sort((a, b) => a[field].localeCompare(b[field]) * orderType);
             break;
-        //fix me
 
         case fieldType === 'number' || fieldType instanceof Date:
-            list.sort((a, b) => {
-                return orderType === 1
-                    ? a[field] - b[field]
-                    : b[field] - a[field];
-            });
+            list.sort((a, b) => (a[field] - b[field]) * orderType);
             break;
 
         default:
