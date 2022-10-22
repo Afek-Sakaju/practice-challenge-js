@@ -1,19 +1,20 @@
-/*consider that n will always be positive and odd number
-if function gets ('@',5) the output will be:
+/* Q: write a function that accept n (positive and odd number)
+and symbol, than print the symbol in symmetric way by using recoursion
+example: for input ('@',5) the function will print:
 @@@@@
 @@@
 @
 @@@
-@@@@@
+@@@@@ 
 */
 
-function printSymbole(symbole, n) {
+function printSymbol(symbol, n) {
     if (n < 0) return;
-    if (n > 1) console.log(symbole.repeat(n));
+    if (n > 1) console.log(symbol.repeat(n));
 
-    printSymbole(symbole, n - 2);
+    printSymbol(symbol, n - 2);
 
-    console.log(symbole.repeat(n));
+    console.log(symbol.repeat(n));
 }
 
-printSymbole('@', 5);
+printSymbol('$', 7);

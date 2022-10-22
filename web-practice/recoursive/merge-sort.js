@@ -1,57 +1,33 @@
-export function merge(left, right) {
-    // O(LEFT-LENGTH(N/2) + RIGHT-LENGTH(N/2) = N)
-    const sorted = [];
-    let l = 0;
-    let r = 0;
+module.exports.mergeSort = function (initialArray) {
+    return initialArray.length ? halving(initialArray) : initialArray;
 
-    while (l < left.length || r < right.length) {
-        const num1 = left[l];
-        const num2 = right[r];
+    function halving(arr) {
+        if (arr.length === 1) return arr;
 
-        switch (true) {
-            case num1 === undefined:
-            case num1 > num2:
-                sorted.push(num2);
-                r++;
-                break;
-            case num2 === undefined:
-            case num1 <= num2:
-                sorted.push(num1);
-                l++;
-                break;
-        }
+        const middle = Math.floor(arr.length / 2);
+        const left = arr.slice(0, middle);
+        const right = arr.slice(middle, arr.length);
+
+        return merge(halving(left), halving(right));
     }
 
-    return sorted;
-}
+    function merge(arr1, arr2) {
+        const sortedArray = [];
 
-export function mergeSort(arr) {
-    // O(N*LogN)
-    // stop condition
-    if (arr.length === 1) {
-        return arr;
-    }
+        while (arr1.length || arr2.length) {
+            switch (true) {
+                case arr2.length === 0:
+                case arr1[0] <= arr2[0]:
+                    sortedArray.push(arr1.shift(0, 1));
+                    break;
 
-    // logic step
-    const middleIndex = Math.ceil(arr.length / 2);
-    const left = arr.slice(0, middleIndex);
-    const right = arr.slice(middleIndex);
-
-    // step recursive function
-    return merge(mergeSort(left), mergeSort(right));
-}
-
-export function bubbleSort(arr) {
-    // O(N^2)
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[i]) {
-                // swap
-                let temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
+                case arr1.length === 0:
+                case arr2[0] < arr1[0]:
+                    sortedArray.push(arr2.shift(0, 1));
+                    break;
             }
         }
+
+        return sortedArray;
     }
-    return arr;
-}
+};
