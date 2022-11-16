@@ -46,13 +46,14 @@ module.exports.isLongestPalindrome = function (str) {
             i >= 0 && j < str.length;
             i--, j++
         ){
-            if(str[i] !== str[j] && str[i+1] === str[j - 1]){
+            if(str[i] !== str[j] ){
                 const palindrome = str.slice(i + 1, j);
                 longestPalindrome.push({
                     startIndex: i + 1,
                     palindrome,
                     length: palindrome.length
                 });
+                break
             }
         }
     })
