@@ -1,5 +1,5 @@
-// input :
-// output :
+// input : 
+// output : 
 
 function myFunc() {}
 
