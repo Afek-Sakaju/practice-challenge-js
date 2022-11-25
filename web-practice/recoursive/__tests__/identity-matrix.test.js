@@ -1,4 +1,4 @@
-import { identityMatrixCheck } from '../identity-matrix';
+const { identityMatrixCheck } = require('../identity-matrix');
 
 describe('identity-matrix tests', () => {
     test.each([

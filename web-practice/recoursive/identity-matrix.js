@@ -1,4 +1,4 @@
-export function identityMatrixCheck(mat, x, size) {
+module.exports.identityMatrixCheck = function (mat, x, size) {
     function sliceMatrix(matrix, x, size) {
         let temp = [];
         let tempX = x;
@@ -26,4 +26,4 @@ export function identityMatrixCheck(mat, x, size) {
         return isIdentityRec();
     }
     return mat[x][x] === 1;
-}
+};
