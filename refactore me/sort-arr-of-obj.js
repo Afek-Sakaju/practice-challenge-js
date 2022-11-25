@@ -33,3 +33,4 @@ const objList = [
 const result = sortObjectList(objList, 'name', 1);
 
 console.log(JSON.stringify(result));
+//todo write tests

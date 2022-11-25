@@ -3,10 +3,10 @@ object, path(string), defaultValue(string).
 The function should return the value from the 
 object using the provided path, if the path is 
 undefined, return the defaultValue
+
 For example: 
 
-const obj = {a:{c:8}};
-
+const obj = {a:{c:8}}
 input: (obj ,'a.c' , 'NoMeaning')
 output: 8 */
 

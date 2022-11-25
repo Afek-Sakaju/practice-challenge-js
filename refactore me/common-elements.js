@@ -37,3 +37,5 @@ module.exports.commonElements = function (arr1, arr2, arr3) {
     }
     return res;
 };
+
+//todo check if the running time is good 

@@ -19,3 +19,5 @@ function distinctString(str) {
 
 const result = distinctString('AABBBCCCDDDNNNNNNN')
 console.log(result);
+
+//todo write tests

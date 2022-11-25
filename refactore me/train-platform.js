@@ -63,3 +63,5 @@ export function findPlatform(arr, dep) {
 
     return platforms.length;
 }
+
+//todo - rewrite tests

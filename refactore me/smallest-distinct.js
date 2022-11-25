@@ -27,8 +27,8 @@ the length of the smallest such window of the string.
 Expected Time Complexity: O(256.N)
 Expected Auxiliary Space: O(256) */
 
-//module.exports.
-const findSubString = function (str) {
+//todo refactor me
+module.exports.findSubString = function (str) {
     const arr = str.split('');
     let obj = {};
     const res = [];
@@ -59,5 +59,3 @@ const findSubString = function (str) {
     }
     return Math.max(...res);
 };
-
-console.log(findSubString('GEEKSGEEKSFOR'));

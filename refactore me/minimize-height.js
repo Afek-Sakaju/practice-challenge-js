@@ -83,3 +83,5 @@ module.exports.getMinDiff = function (arr, k) {
 
     return max - min;
 };
+
+//todo refactor code

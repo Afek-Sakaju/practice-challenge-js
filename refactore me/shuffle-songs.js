@@ -37,5 +37,7 @@ function testShuffle() {
 
 //testShuffle();
 
-const bday = new Date('02/02/2000')
-console.log(bday instanceof Date)
+const bday = new Date('02/02/2000');
+console.log(bday instanceof Date);
+
+//todo write tests

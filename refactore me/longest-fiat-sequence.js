@@ -36,3 +36,5 @@ export const longestFlatSequence = function (arr) {
     rec(arr);
     return counter;
 };
+
+//todo refactore code and change to const require

@@ -1,4 +1,4 @@
-const { digitsNum } = require('../digits-num');
+const { digitsNum } = require('../digits-sum');
 
 describe('digits-sum tests', () => {
     test.each([

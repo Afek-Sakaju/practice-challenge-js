@@ -68,3 +68,6 @@ inversionCount = function (arr) {
 };
 
 inversionCount([2, 4, 1, 3, 5]);
+
+//use merge sort with trick in it to solve this +
+//todo write tests

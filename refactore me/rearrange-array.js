@@ -66,3 +66,5 @@ module.exports.rearrange = function (arr) {
 
     return arr;
 };
+
+////todo write more tests and refactor code

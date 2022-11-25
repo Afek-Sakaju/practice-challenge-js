@@ -25,3 +25,5 @@ function sortArr012(arr) {
 
 const result = sortArr012([0, 0, 1, 2, 2, 0, 0, 1]);
 console.log(`${result}`);
+
+//todo write tests

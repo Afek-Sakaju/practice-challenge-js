@@ -26,3 +26,5 @@ function splitString(str, splitChar) {
 const str = '01,ab,34,cd';
 const response = splitString(str, ',');
 console.log(response);
+
+//todo write tests and refactor

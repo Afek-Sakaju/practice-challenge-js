@@ -5,6 +5,8 @@ class Node {
     }
 }
 
+//todo write tests
+
 let list1 = new Node(1, new Node(2, new Node(3, new Node(4))));
 
 function listToString(node) {
