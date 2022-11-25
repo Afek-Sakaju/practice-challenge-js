@@ -1,3 +1,5 @@
+// Implement merge sort
+
 module.exports.mergeSort = function (initialArray) {
     return initialArray.length ? halving(initialArray) : initialArray;
 

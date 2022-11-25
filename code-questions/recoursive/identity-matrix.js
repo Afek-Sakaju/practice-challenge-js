@@ -1,3 +1,12 @@
+/* Write a function that will accept matrix and 
+variable X that represent x and y placements on the metrix, 
+and variable size which represent the size of the matrix that you
+are going to check, if the checked metrix that start from point(x,x)
+on the matrix in the given size is identityMatrix return true, 
+else return false.
+(This is a question iv'e seen from my friend that had 
+in his degree exams, i took the challange, here is my solution.) */
+
 module.exports.identityMatrixCheck = function (mat, x, size) {
     function sliceMatrix(matrix, x, size) {
         let temp = [];
