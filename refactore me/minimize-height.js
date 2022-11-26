@@ -44,30 +44,32 @@ Expected Auxiliary Space: O(N) */
 
 module.exports.getMinDiff = function (arr, k) {
     arr.sort((a, b) => a - b);
-    const lastElement = arr[arr.length - 1];
 
-    let min = arr[0] + k;
-    let max = k < lastElement ? lastElement - k : lastElement + k;
+    arr[0] += k;
+    arr[arr.length - 1] =
+        arr[arr.length - 1] > k
+            ? arr[arr.length - 1] - k
+            : arr[arr.length - 1] + k;
+
+    let min = arr[0];
+    let max = arr[arr.length - 1];
 
     for (let i = 1; i < arr.length - 1; i++) {
-        const current = current;
+        let current = arr[i];
         switch (true) {
-            case current - k < 0:
-            case current + k < max:
-                current += k;
+            case arr[i] + k <= max: // && arr[i] + k >= min:
+                arr[i] += k;
                 break;
-            case current - k > min:
-                current -= k;
+            case arr[i] - k >= min: //&& arr[i] + k <= max:
+                arr[i] -= k;
                 break;
             default:
-                /* in case that adding k to current is higher than max
-                and subtracting k from him is lower than min,
-                take the option that leads to less difference from max to min */
-                if (min - arr[i] - k > arr + k - max) arr[i] += k;
-                else arr[i] -= k;
+                if (min - arr[i] - k >= arr + k - max) arr[i] -= k;
+                else arr[i] += k;
+                break;
         }
-        if (arr[i] < min) min = arr[i];
-        if (arr[i] > max) max = arr[i];
+        min = arr[i] < min ? arr[i] : min;
+        max = arr[i] > max ? arr[i] : max;
     }
 
     return max - min;

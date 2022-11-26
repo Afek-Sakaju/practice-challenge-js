@@ -13,15 +13,4 @@ describe('minimize-height tests', () => {
             expect(getMinDiff(arr, k)).toBe(res);
         }
     );
-    test.each([
-        [[-20, -3, -9, -12, -16], 12],
-        [[-1, -5, -900, 101], 750],
-        [[-3, 4, 7, 9], 2],
-        [[-8], 3],
-    ])(
-        'function accepts arr: %s and num: %s, than return undefined',
-        (arr, k) => {
-            expect(getMinDiff(arr, k)).toBe(undefined);
-        }
-    );
 });
