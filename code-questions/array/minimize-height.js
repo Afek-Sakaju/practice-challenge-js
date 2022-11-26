@@ -43,6 +43,7 @@ Expected Time Complexity: O(N*logN)
 Expected Auxiliary Space: O(N) */
 
 module.exports.getMinDiff = function (arr, k) {
+    if (arr.length === 0) return;
     arr.sort((a, b) => a - b);
 
     arr[0] += k;
@@ -55,16 +56,15 @@ module.exports.getMinDiff = function (arr, k) {
     let max = arr[arr.length - 1];
 
     for (let i = 1; i < arr.length - 1; i++) {
-        let current = arr[i];
         switch (true) {
-            case arr[i] + k <= max: // && arr[i] + k >= min:
+            case arr[i] + k <= max:
                 arr[i] += k;
                 break;
-            case arr[i] - k >= min: //&& arr[i] + k <= max:
+            case arr[i] - k >= min:
                 arr[i] -= k;
                 break;
             default:
-                if (min - arr[i] - k >= arr + k - max) arr[i] -= k;
+                if (min - arr[i] - k > arr + k - max) arr[i] -= k;
                 else arr[i] += k;
                 break;
         }

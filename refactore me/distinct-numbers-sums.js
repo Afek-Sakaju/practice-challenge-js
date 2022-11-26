@@ -36,21 +36,13 @@ Expected Time Complexity: O(n * sum) where sum = sum of all elements of nums.
 Expected Space Complexity: O(sum) */
 
 module.exports.distinictSum = function (arr) {
-    const sums = { 0: 0 };
+    const obj = {};
 
-    const maxSum = arr.reduce((total, n) => {
-        return (total += n);
-    }, 0);
+    const maxSum = arr.reduce((total, n) => (total += n), 0);
 
-    for (const char of arr) {
-        sums[maxSum - char] = maxSum - char;
+    for (let i = 0; i < arr.length; i++) {
+        obj[maxSum - arr[i]] = maxSum - arr[i];
     }
-
-    for (const char of arr) {
-        sums[char] = char;
-    }
-
-    sums[maxSum] = maxSum;
-
-    return Object.values(sums);
 };
+
+//the solution needs to be memoized and recoursive
