@@ -1,4 +1,4 @@
-const { distinictSum } = require('../distinct-sum');
+const { distinictSum } = require('../distinct-numbers-sums');
 
 describe('distinct-sum tests', () => {
     test.each([

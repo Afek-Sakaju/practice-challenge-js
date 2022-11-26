@@ -43,32 +43,21 @@ Expected Time Complexity: O(N*logN)
 Expected Auxiliary Space: O(N) */
 
 module.exports.getMinDiff = function (arr, k) {
-    arr.sort((a, b) => {
-        if (a > b) return 1;
-        if (a < b) return -1;
-        return 0;
-    });
+    arr.sort((a, b) => a - b);
+    const lastElement = arr[arr.length - 1];
 
     let min = arr[0] + k;
-    let max =
-        k < arr[arr.length - 1]
-            ? arr[arr.length - 1] - k
-            : arr[arr.length - 1] + k;
-
-    if (min < 0) return;
-    /* After the operation, the resultant array 
-    should not contain any negative integers. 
-    so smallest number + k can't be negative */
+    let max = k < lastElement ? lastElement - k : lastElement + k;
 
     for (let i = 1; i < arr.length - 1; i++) {
-        //loop skips the first and last number as they were already calculated
+        const current = current;
         switch (true) {
-            case arr[i] - k < 0:
-            case arr[i] + k < max:
-                arr[i] += k;
+            case current - k < 0:
+            case current + k < max:
+                current += k;
                 break;
-            case arr[i] - k > min:
-                arr[i] -= k;
+            case current - k > min:
+                current -= k;
                 break;
             default:
                 /* in case that adding k to current is higher than max
