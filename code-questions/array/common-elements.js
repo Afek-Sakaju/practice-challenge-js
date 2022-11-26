@@ -16,26 +16,23 @@ Explanation: 20 and 80 are the only
 common elements in A, B and C. */
 
 module.exports.commonElements = function (arr1, arr2, arr3) {
+    const obj = {};
     const res = [];
-    let i = 0;
-    let j = 0;
-    let k = 0;
 
-    for (; i < arr1.length; i++) {
-        for (; j < arr2.length; j++) {
-            if (arr1[i] === arr2[j]) {
-                for (; k < arr3.length; k++) {
-                    if (arr2[j] === arr3[k]) res.push(arr3[k]);
-                    else if (arr2[j] < arr3[k]) {
-                        break;
-                    }
-                }
-            } else if (arr1[i] < arr2[j]) {
-                break;
-            }
+    arr1.forEach((element) => {
+        if (!obj.hasOwnProperty(element)) obj[element] = 0;
+    });
+
+    arr2.forEach((element) => {
+        if (obj[element] === 0) obj[element]++;
+    });
+
+    arr3.forEach((element) => {
+        if (obj[element] === 1) {
+            res.push(element);
+            obj[element]++;
         }
-    }
+    });
+
     return res;
 };
-
-//todo check if the running time is good 
