@@ -1,11 +1,13 @@
-import { longestFlatSequence } from '../longest-fiat-sequence';
+const { longestFlatSequence } = require('../longest-fiat-sequence');
 
 describe('longest-flat-sequence tests', () => {
     test.each([
-        [[4, 5, 6, 5, 4, 3], 3],
-        [[4, 4, 4, 4, 4], 5],
+        [[3, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1], 11],
+        [[4, 5, 6, 5, 6, 4, 3], 4],
+        [[4, 2, 4, 3, 4], 3],
         [[0, 1, 0, 5], 3],
-        [[9, 8, 9, 6, 6, 6, 6], 4],
+        [[9, 8, 9, 6, 6], 3],
+        [[9, 2, 6, 5], 2],
         [[5], 1],
         [[], 0],
     ])('function accepts arr:"%s", then return:"%s"', (arr, res) => {
