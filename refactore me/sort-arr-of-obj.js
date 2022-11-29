@@ -3,14 +3,18 @@ field (string), and orderType (number), the function need to
 return the array sorted by the field in the given orderType */
 
 function sortObjectList(list, field, orderType) {
-    if (list.length === 0 || field === undefined || field === null) return list;
-    if (orderType !== 1 && orderType !== -1) throw Error('order type invalid');
+    if (list.length === 0 || field === undefined || field === null)
+        return list;
+    if (orderType !== 1 && orderType !== -1)
+        throw Error('order type invalid');
 
     let fieldType = typeof list[0][field];
 
     switch (true) {
         case fieldType === 'string':
-            list.sort((a, b) => a[field].localeCompare(b[field]) * orderType);
+            list.sort(
+                (a, b) => a[field].localeCompare(b[field]) * orderType
+            );
             break;
 
         case fieldType === 'number' || fieldType instanceof Date:
