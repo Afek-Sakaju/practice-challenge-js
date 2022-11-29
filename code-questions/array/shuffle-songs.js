@@ -6,6 +6,10 @@ function shuffle(songs) {
     const temp = songs.slice(0);
     const res = [];
 
+    function generateRandom(min, max) {
+        return ~~(Math.random() * (max + min) + min);
+    }
+
     while (temp.length > 0) {
         const randomIndex = generateRandom(0, temp.length);
 
@@ -15,9 +19,9 @@ function shuffle(songs) {
     return res;
 }
 
-function generateRandom(min, max) {
-    return ~~(Math.random() * (max + min) + min);
-}
+/* The tests are in the function to check manually because 
+the result should be randomise than its more comfortable 
+to see that the results on the function down below : "testShuffle"*/
 
 function testShuffle() {
     const songs = [
@@ -35,9 +39,4 @@ function testShuffle() {
     }
 }
 
-//testShuffle();
-
-const bday = new Date('02/02/2000');
-console.log(bday instanceof Date);
-
-//todo write tests
+testShuffle();
