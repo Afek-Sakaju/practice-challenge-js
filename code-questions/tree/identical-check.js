@@ -10,8 +10,10 @@ const identicalTreeCheck = (module.exports.identicalTreeCheck = function (
 ) {
     if (!node1 && !node2) return true;
 
-    return (!node1 && node2) || (node1 && !node2) || node1.data !== node2.data
-        ? false
-        : identicalTreeCheck(node1.left, node2.left) &&
-              identicalTreeCheck(node1.right, node2.right);
+    if (node1 ^ node2 || node1.data !== node2.data) return false;
+
+    return (
+        identicalTreeCheck(node1.left, node2.left) &&
+        identicalTreeCheck(node1.right, node2.right)
+    );
 });
