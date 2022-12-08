@@ -29,16 +29,10 @@ The array must be modified in-place without using extra space.
 Expected Time Complexity: O(N)
 Expected Auxiliary Space: O(1) */
 
-module.exports.rotateArr = function (arr, rotateCount) {
-    if (rotateCount < 0) return arr;
+module.exports.rotateArr = function (arr, D) {
+    if (!arr.length || D <= 0) return;
 
-    rotateCount %= arr.length;
-    let counter = 0;
+    D %= arr.length;
 
-    while (counter !== rotateCount) {
-        arr.push(arr.shift());
-        counter++;
-    }
-
-    return arr;
+    arr.push(...arr.splice(0, D));
 };
