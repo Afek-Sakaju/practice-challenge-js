@@ -37,37 +37,45 @@ as inputs and returns the inversion count of the given array.
 Expected Time Complexity: O(NLogN).
 Expected Auxiliary Space: O(N). */
 
-//module.exports.
-inversionCount = function (arr) {
-    const obj = {};
+module.exports.inversionCount = function (arr) {
+    if (!arr.length) return 0;
 
-    //{10:[0,2,4],3:[1],4:[3]}
-    for (let i = 0; i < arr.length; i++) {
-        if (!obj.hasOwnProperty(arr[i])) {
-            obj[arr[i]] = [i];
-        } else {
-            obj[arr[i]].push(i);
-        }
+    let inversions = 0;
+    halving(arr);
+
+    return inversions;
+
+    function halving(arr) {
+        if (arr.length === 1) return arr;
+
+        const mid = parseInt(`${arr.length / 2}`);
+        const leftArr = arr.slice(0, mid);
+        const rightArr = arr.slice(mid, arr.length);
+
+        return merge(halving(leftArr), halving(rightArr));
     }
 
-    let i = 0;
-    arr.sort((a, b) => {
-        if (a < b) {
-            return -1;
-        }
-        if (a > b) {
-            i++;
-            return 1;
-        }
-        return 0;
-    });
+    function merge(arr1, arr2) {
+        const result = [];
 
-    console.log(i);
+        while (arr1.length || arr2.length) {
+            switch (true) {
+                case arr2.length === 0:
+                    result.push(arr1.shift());
+                    break;
+                case arr1[0] <= arr2[0]:
+                    result.push(arr1.shift());
+                    break;
+                case arr1.length === 0:
+                    result.push(arr2.shift());
+                    break;
+                case arr2[0] < arr1[0]:
+                    result.push(arr2.shift());
+                    inversions += arr1.length; // the key to solution
+                    break;
+            }
+        }
 
-    //for(let i=0;i<arr.length;i++){if(obj[arr[i]].shift() < i)}
+        return result;
+    }
 };
-
-inversionCount([2, 4, 1, 3, 5]);
-
-//use merge sort with trick in it to solve this +
-//todo write tests
