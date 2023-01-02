@@ -12,22 +12,25 @@ output:
 name:"afek",
 required=true} */
 
+//refactor to detect any attribute
 function regexHtmlLine(line) {
+    const reg1 = new RegExp(/<.*?>/gm);
+    const firstHalf = line.match(reg1)[0];
+
     const attributes = {};
+    const reg2 = new RegExp(
+        /(\w*?)="(.*?)"|(?<!<)\s([a-zA-Z]+)[\s|>](?!<)/gm
+    );
+    const res = [...firstHalf.matchAll(reg2)];
 
-    const [style] = new RegExp(/style=".*?"/gm).exec(line);
-    attributes.style = style.split('style=')[1].replaceAll('"', '');
-
-    const [name] = new RegExp(/name=".*?"/gm).exec(line);
-    attributes.name = name.split('name=')[1].replaceAll('"', '');
-
-    const [required] = new RegExp(/\brequired\b/gm).exec(line);
-    attributes.required = required !== '';
+    res.forEach((e) => {
+        if (e[1]) attributes[e[1]] = e[2] ? e[2] : e[1];
+        else attributes[e[3]] = true;
+    });
 
     return attributes;
 }
 
 const str = '<h3 style="color=red" name="afek" required> Hi </h3>';
-const res = regexHtmlLine(str);
 
-console.log(`result: ${JSON.stringify(res)}`);
+console.log(regexHtmlLine(str));
