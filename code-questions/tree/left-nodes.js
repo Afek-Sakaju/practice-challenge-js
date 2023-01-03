@@ -1,13 +1,28 @@
-class Node {
-    constructor(data, left = null, right = null, color = 'grey') {
-        this.data = data;
-        this.left = left;
-        this.right = right;
-        this.color = color;
-    }
-}
+/* Write a function that accepts a root of a tree
+and return string of all his left son's values
+(including the root & including the left son's of right son's)  
 
-function printLeftView(node, isLeftSon = true, result = '') {
+Example: 
+
+input: root of the tree below
+               4
+              /  \
+             /    \
+            /      \
+           5        2
+                   / \
+                  /   \
+                 3     1
+                / \     
+               6   7     
+
+output: '4536' */
+
+const printLeftView = (module.exports.printLeftView = function (
+    node,
+    isLeftSon = true,
+    result = ''
+) {
     if (!node) return result;
 
     if (isLeftSon) result += node.data;
@@ -16,14 +31,4 @@ function printLeftView(node, isLeftSon = true, result = '') {
     const resRight = printLeftView(node.right, false, resLeft);
 
     return resRight;
-}
-
-const root1 = new Node(
-    4,
-    new Node(5),
-    new Node(2, new Node(3, new Node(6), new Node(7)), new Node(1))
-);
-
-const result = printLeftView(root1);
-
-console.log('expected "4536", result is:', result);
+});
