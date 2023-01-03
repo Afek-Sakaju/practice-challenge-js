@@ -43,25 +43,25 @@ and the last two characters represent minutes (this may be > 59).
 Expected Time Complexity: O(nLogn)
 Expected Auxiliary Space: O(n) */
 
-export function findPlatform(arr, dep) {
-    const platforms = [dep[0]];
+module.exports.findPlatform = function (arr, dep) {
+    if (!arr.length || !dep.length) return 0;
 
-    for (let i = 1; i < arr.length; i++) {
-        let currentArrival = arr[i];
-        let currentDeparture = dep[i];
+    let maxPlatforms = 1;
+    let currenPlatformsNeed = 1;
 
-        for (let j = 0; j < platforms.length; j++) {
-            if (platforms[j] < currentArrival) {
-                platforms[j] = currentDeparture;
-                break;
-            } else if (j === platforms.length - 1) {
-                platforms.push(currentDeparture);
-                break;
-            }
+    dep.sort((a, b) => a - b);
+
+    for (let i = 1, j = 0; j < dep.length && i < arr.length; ) {
+        if (arr[i] >= dep[j]) {
+            currenPlatformsNeed--;
+            j++;
+        } else {
+            currenPlatformsNeed++;
+            i++;
         }
+
+        if (maxPlatforms < currenPlatformsNeed) maxPlatforms++;
     }
 
-    return platforms.length;
-}
-
-//todo - rewrite tests
+    return maxPlatforms;
+};
