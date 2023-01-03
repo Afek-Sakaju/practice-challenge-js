@@ -46,25 +46,29 @@ Expected Time Complexity: O(N)
 Expected Auxiliary Space: O(N) */
 
 module.exports.rearrange = function (arr) {
-    const nonNegatives = [];
+    const positives = []; // note: positives includes - 0
     const negatives = [];
+    const res = [];
 
-    for (const num of arr) {
-        if (num >= 0) nonNegatives.push(num);
-        if (num < 0) negatives.push(num);
-        // i think its easier to understand
-        // the code this way, even that i could
-        // use an "else"
+    arr.forEach((num) => {
+        if (num >= 0) positives.push(num);
+        else negatives.push(num);
+    });
+
+    while (res.length < arr.length) {
+        switch (true) {
+            case !negatives.length:
+                res.push(...positives);
+                break;
+            case !positives.length:
+                res.push(...negatives);
+                break;
+            default:
+                res.push(positives.shift(), negatives.shift());
+        }
     }
 
-    for (let i = 0; i < arr.length; i++) {
-        if (i % 2 === 0 || negatives.length === 0)
-            arr[i] = nonNegatives.shift();
-        else if (i % 2 !== 0 || nonNegatives.length === 0)
-            arr[i] = negatives.shift();
-    }
-
-    return arr;
+    return res;
 };
 
 ////todo write more tests and refactor code
