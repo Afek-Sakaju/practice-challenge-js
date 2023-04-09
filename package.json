@@ -1,7 +1,16 @@
 {
-    "name": "mycode",
+    "name": "just-like-me",
+    "description": "This project focused on solving a variety of interview questions to improve my programming and problem-solving skills. ",
+    "author": "afek-sakaju",
+    "homepage": "https://github.com/afekTheMiniLearner/Just-Like-Me",
+    "keywords": [
+        "interview-questions",
+        "problem-solving",
+        "javascript",
+        "tests"
+    ],
     "version": "1.0.0",
-    "description": "",
+    "private": true,
     "scripts": {
         "start": "nodemon back-end-practice/cook-site/app.ts",
         "dev": "nodemon back-end-practice/cook-site/app.js",
@@ -9,7 +18,6 @@
         "jest-init": "jest --init",
         "test": "jest"
     },
-    "author": "Hadriel",
     "license": "ISC",
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",
