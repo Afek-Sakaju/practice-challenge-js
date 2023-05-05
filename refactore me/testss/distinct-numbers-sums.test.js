@@ -14,7 +14,7 @@ describe('distinct-sum tests', () => {
             [1, 2, 3, 4],
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         ],
-    ])('function accept set: %s, than return res: %s', (set, res) => {
+    ])('function accept set: %s, then return res: %s', (set, res) => {
         expect(distinictSum(set)).toEqual(res);
     });
 });

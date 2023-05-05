@@ -8,7 +8,7 @@ describe('sum-two-large-numbers tests', () => {
         ['0007', '100', 107],
         ['9', '1', 10],
     ])(
-        'function accepts strings: %s & %s, than returns sum: %s',
+        'function accepts strings: %s & %s, then returns sum: %s',
         (str1, str2, res) => {
             expect(findSum(str1, str2)).toBe(res);
         }

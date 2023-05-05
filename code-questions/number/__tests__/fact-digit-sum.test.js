@@ -8,7 +8,7 @@ describe('fact-digit-sum tests', () => {
         [0, 0],
         [3, 12],
         [21, 12333],
-    ])('function accept number:%s, than return %s', (num, res) => {
+    ])('function accept number:%s, then return %s', (num, res) => {
         expect(factDigit(num)).toBe(res);
     });
 });

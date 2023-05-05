@@ -5,7 +5,7 @@ describe('trapping-water tests', () => {
         [[7, 4, 0, 9], 10],
         [[6, 9, 9], 0],
         [[3, 0, 0, 2, 0, 4], 10],
-    ])('function accept arr: %s than return result: %s', (arr, res) => {
+    ])('function accept arr: %s then return result: %s', (arr, res) => {
         expect(trappingWater(arr)).toBe(res);
     });
 });

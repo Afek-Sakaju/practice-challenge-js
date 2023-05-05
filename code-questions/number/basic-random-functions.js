@@ -1,5 +1,5 @@
 /* Part-1: Write a function that roll 3 random numbers between 0-100 
-and print them, than returns the biggest number */
+and print them, then returns the biggest number */
 
 function biggestFromThree() {
     const num1 = ~~(Math.random() * 100);
@@ -12,7 +12,7 @@ function biggestFromThree() {
 }
 
 /* Part-2: Write a function that generates random number between 1000-9999 
-than print its digit's sum */
+then print its digit's sum */
 
 function randomDigitsSum() {
     let random = Math.floor(Math.random() * (9999 - 1000) + 1000);

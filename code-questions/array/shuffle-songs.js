@@ -20,7 +20,7 @@ function shuffle(songs) {
 }
 
 /* The tests are in the function to check manually because 
-the result should be randomise than its more comfortable 
+the result should be randomise then its more comfortable 
 to see that the results on the function down below : "testShuffle"*/
 
 function testShuffle() {

@@ -30,7 +30,7 @@ describe('common-elements tests', () => {
         [[], [], [629, 80, 100], []],
         [[], [], [], []],
     ])(
-        'function accepts 3 arrays:\n %s\n%s\n%s\n than return arr:%s',
+        'function accepts 3 arrays:\n %s\n%s\n%s\n then return arr:%s',
         (arr1, arr2, arr3, res) => {
             expect(commonElements(arr1, arr2, arr3)).toEqual(res);
         }

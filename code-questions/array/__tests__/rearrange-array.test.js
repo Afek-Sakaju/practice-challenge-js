@@ -33,7 +33,7 @@ describe('rearrange-array tests', () => {
         [[-5], [-5]],
         [[5], [5]],
         [[], []],
-    ])('function accepts arr:%s, than return arr:%s', (arr, res) => {
+    ])('function accepts arr:%s, then return arr:%s', (arr, res) => {
         expect(rearrange(arr)).toEqual(res);
     });
 });

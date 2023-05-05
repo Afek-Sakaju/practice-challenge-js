@@ -115,7 +115,7 @@ describe('identity-matrix tests', () => {
             false,
         ],
     ])(
-        'function accept matrix: %s\n with x:%s and size:%s, than returns :%s',
+        'function accept matrix: %s\n with x:%s and size:%s, then returns :%s',
         (matrix, x, size, result) => {
             expect(identityMatrixCheck(matrix, x, size)).toBe(result);
         }

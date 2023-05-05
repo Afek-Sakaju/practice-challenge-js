@@ -12,7 +12,7 @@ describe('minimize-height tests', () => {
         [[100, 10, 15], 5, 80],
         [[], 5, undefined],
     ])(
-        'function accepts arr: %s and k: %s, than return res: %s',
+        'function accepts arr: %s and k: %s, then return res: %s',
         (arr, k, res) => {
             expect(getMinDiff(arr, k)).toBe(res);
         }

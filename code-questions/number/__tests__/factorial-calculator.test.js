@@ -6,7 +6,7 @@ describe('factorial-calculator tests', () => {
             [7, 5040],
             [11, 39916800],
             [9, 362880],
-        ])('function accept number:%s than return number:%s', (num, res) => {
+        ])('function accept number:%s then return number:%s', (num, res) => {
             expect(factorialIterative(num)).toBe(res);
         });
     });
@@ -15,7 +15,7 @@ describe('factorial-calculator tests', () => {
             [7, 5040],
             [11, 39916800],
             [9, 362880],
-        ])('function accept number:%s than return number:%s', (num, res) => {
+        ])('function accept number:%s then return number:%s', (num, res) => {
             expect(factorialRec(num)).toBe(res);
         });
     });

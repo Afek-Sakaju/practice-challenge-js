@@ -1,4 +1,4 @@
-/* Part-1: Write a function that accept two numbers, than returns the
+/* Part-1: Write a function that accept two numbers, then returns the
 biggest possible number to divide by both of them */
 
 function biggestDivider(num1, num2) {
@@ -14,7 +14,7 @@ function biggestDivider(num1, num2) {
     }
 }
 
-/* Part-2: Write a function that accept two numbers, than returns the
+/* Part-2: Write a function that accept two numbers, then returns the
 smallest possible positive number that is divided by both of them */
 
 function smallestDividedNum(num1, num2) {

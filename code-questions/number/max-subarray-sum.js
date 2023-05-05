@@ -35,7 +35,7 @@ Expected Auxiliary Space: O(1) */
 
 module.exports.maxSubarraySum = function (arr) {
     if (arr.length < 2) return arr[0];
-    // even if its an empty array than undefined will be returned
+    // even if its an empty array then undefined will be returned
 
     let sum1 = arr[0];
     let sum2 = arr[1];

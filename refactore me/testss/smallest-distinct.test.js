@@ -5,7 +5,7 @@ describe('shuffle-name tests', () => {
         ['AABBBCBBAC', 3],
         ['aaab', 2],
         ['GEEKSGEEKSFOR', 8],
-    ])('function accepts full-name:"%s" ,than return: "%s"', (name1, name2) => {
+    ])('function accepts full-name:"%s" ,then return: "%s"', (name1, name2) => {
         expect(findSubString(name1)).toBe(name2);
     });
 });

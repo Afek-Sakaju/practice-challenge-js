@@ -6,7 +6,7 @@ describe('max-subarray-sum tests', () => {
         [[-1, -2, -3, -4], -1],
         [[7, 9, -99, 1, 100], 101],
         [[1, 4, 0, 4, 0, -3, 7], 13],
-    ])('function accept arr: %s than return sum: %s', (arr, res) => {
+    ])('function accept arr: %s then return sum: %s', (arr, res) => {
         expect(maxSubarraySum(arr)).toBe(res);
     });
 });

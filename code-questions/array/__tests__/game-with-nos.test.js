@@ -10,7 +10,7 @@ describe('game-with-nos tests', () => {
             [10, 11, 1, 2, 3],
             [1, 10, 3, 1, 3],
         ],
-    ])('function accepts arr: %s than returns arr: %s', (arr, res) => {
+    ])('function accepts arr: %s then returns arr: %s', (arr, res) => {
         expect(game_with_number(arr)).toEqual(res);
     });
 });

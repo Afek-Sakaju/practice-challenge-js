@@ -1,5 +1,5 @@
 /* Q: write a function that accept n (positive and odd number)
-and symbol, than print the symbol in symmetric way by using recoursion
+and symbol, then print the symbol in symmetric way by using recoursion
 example: for input ('@',5) the function will print:
 @@@@@
 @@@
