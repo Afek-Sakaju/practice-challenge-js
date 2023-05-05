@@ -10,14 +10,8 @@ Expected Auxilliary Space : O(n+m) */
 
 module.exports.doUnion = function (arr1, arr2) {
     const uniqueOnly = new Set();
+    arr1.forEach((element) => uniqueOnly.add(element));
+    arr2.forEach((element) => uniqueOnly.add(element));
 
-    for (const char of arr1) {
-        uniqueOnly.add(char);
-    }
-    for (const char of arr2) {
-        uniqueOnly.add(char);
-    }
     return uniqueOnly.size;
 };
-
-//the key here to the solution is to use Set
