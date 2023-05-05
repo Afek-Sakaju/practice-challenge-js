@@ -8,9 +8,11 @@ input:
 
 output:
 
-{style: "color=red",
-name:"afek",
-required=true} */
+{
+    style: "color=red",
+    name:"afek",
+    required=true
+} */
 
 //refactor to detect any attribute
 function regexHtmlLine(line) {

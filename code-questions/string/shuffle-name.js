@@ -3,7 +3,7 @@
 than returns string with the first and last name swapped. */
 
 module.exports.shuffle = function (fullName) {
-    const arr = fullName.split(' ');
+    const [first, last] = fullName?.split(' ');
 
-    return arr.length > 1 ? arr[1] + ' ' + arr[0] : fullName;
+    return first && last ? `${last} ${first}` : fullName;
 };
