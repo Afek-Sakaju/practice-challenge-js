@@ -3,7 +3,9 @@ of a person's first and last name and returns
 string with the first and last name swapped. */
 
 module.exports.shuffle = function (fullName) {
-    const [first, last] = fullName?.split(' ');
+    const names = fullName?.split(' ');
+    if (names?.length !== 2) return fullName;
 
-    return first && last ? `${last} ${first}` : fullName;
+    const [first, last] = names;
+    return `${last} ${first}`;
 };
