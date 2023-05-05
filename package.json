@@ -12,9 +12,6 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "start": "nodemon back-end-practice/cook-site/app.ts",
-        "dev": "nodemon back-end-practice/cook-site/app.js",
-        "build:watch": "tsc -w",
         "jest-init": "jest --init",
         "test": "jest"
     },
@@ -24,8 +21,7 @@
         "@types/passport-local": "^1.0.34",
         "jest": "^27.5.1",
         "jest-html-reporters": "^3.0.5",
-        "prettier": "^2.7.1",
-        "ts-node": "^10.9.1"
+        "prettier": "^2.7.1"
     },
     "dependencies": {
         "@types/body-parser": "^1.19.2",
@@ -33,21 +29,7 @@
         "@types/express-session": "^1.17.5",
         "@types/passport": "^1.0.11",
         "axios": "^0.26.1",
-        "bcrypt": "^5.0.1",
-        "body-parser": "^1.20.0",
-        "cors": "^2.8.5",
-        "express": "^4.18.1",
-        "express-flash": "^0.0.2",
-        "express-session": "^1.17.3",
         "fs": "^0.0.1-security",
-        "helmet": "^5.1.0",
-        "mongoose": "^6.5.4",
-        "nodemon": "^2.0.19",
-        "passport": "^0.6.0",
-        "passport-local": "^1.0.0",
-        "path": "^0.12.7",
-        "typescript": "^4.8.3",
-        "uuid": "^8.3.2",
-        "yarn": "^1.22.19"
+        "path": "^0.12.7"
     }
 }
