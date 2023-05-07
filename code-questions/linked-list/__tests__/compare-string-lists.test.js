@@ -45,6 +45,14 @@ describe('compare string lists tests', () => {
         const list2 = null;
 
         const result = compare(list1, list2);
-        expect(result).toBeUndefined();
+        expect(result).toBe(0);
+    });
+
+    test('function accept list1: null, and list2: "b" then returns -1', () => {
+        const list1 = null;
+        const list2 = new Node('b');
+
+        const result = compare(list1, list2);
+        expect(result).toBe(-1);
     });
 });

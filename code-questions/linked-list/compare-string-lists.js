@@ -28,21 +28,17 @@ Explanation: Both the strings are "geeks".
 Time Complexity: O(N + M) where N and M are the lengths of the linked lists.
 Auxiliary Space: O(N + M) */
 
-module.exports.compare = function (list1, list2) {
-    if (!list1 || !list2) return;
-    let pointer1 = list1;
-    let pointer2 = list2;
-
-    while (pointer1 && pointer2) {
-        const char1 = pointer1.value;
-        const char2 = pointer2.value;
+module.exports.compare = function (head1, head2) {
+    while (head1 && head2) {
+        const char1 = head1.value;
+        const char2 = head2.value;
 
         const equalityResult = char1.localeCompare(char2);
-        if (equalityResult) return equalityResult;
+        if (equalityResult !== 0) return equalityResult;
 
-        pointer1 = pointer1.next;
-        pointer2 = pointer2.next;
+        head1 = head1.next;
+        head2 = head2.next;
     }
 
-    return pointer1 || pointer2 || 0;
+    return (head1?.value ?? '').localeCompare(head2?.value ?? '');
 };
