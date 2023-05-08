@@ -42,3 +42,14 @@ module.exports.compare = function (head1, head2) {
 
     return (head1?.value ?? '').localeCompare(head2?.value ?? '');
 };
+
+const compareRec = (module.exports.compareRec = function (head1, head2) {
+    if (head1 && !head2) return 1;
+    else if (head2 && !head1) return -1;
+    else if (!head2 && !head1) return 0;
+
+    return (
+        head1.value?.localeCompare(head2.value) ||
+        compareRec(head1.next, head2.next)
+    );
+});
