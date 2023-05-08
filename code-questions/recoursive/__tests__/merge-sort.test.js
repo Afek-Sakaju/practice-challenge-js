@@ -26,6 +26,7 @@ describe('merge-sort tests', () => {
             [3, 2, 1, 0],
             [0, 1, 2, 3],
         ],
+        [[1], [1]],
         [[], []],
     ])('function accepts arr: %s, then return result: %s', (arr, res) => {
         expect(mergeSort(arr)).toEqual(res);
