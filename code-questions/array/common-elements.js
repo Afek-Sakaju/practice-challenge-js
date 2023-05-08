@@ -1,7 +1,5 @@
 /* Given three arrays sorted in increasing order. 
 Find the elements that are common in all three arrays.
-Note: can you take care of the duplicates 
-without using any additional Data Structure? 
 Expected Time Complexity: O(n1 + n2 + n3)
 Expected Auxiliary Space: O(n1 + n2 + n3)
 
@@ -19,18 +17,12 @@ module.exports.commonElements = function (arr1, arr2, arr3) {
     const obj = {};
     const res = [];
 
-    arr1.forEach((element) => {
-        if (!obj.hasOwnProperty(element)) obj[element] = 0;
-    });
-
-    arr2.forEach((element) => {
-        if (obj[element] === 0) obj[element]++;
-    });
-
+    arr1.forEach((element) => (obj[element] = 0));
+    arr2.forEach((element) => (obj[element] ||= 1));
     arr3.forEach((element) => {
         if (obj[element] === 1) {
             res.push(element);
-            obj[element]++;
+            delete obj[element];
         }
     });
 
