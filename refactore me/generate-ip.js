@@ -34,48 +34,44 @@ Expected Auxiliary Space: O(N * N * N * N) */
 module.exports.genIp = function (str) {
     if (str.length < 4) return -1;
 
-    let i = 0;
     const result = [];
-
-    while (i < 4) {
-        let strInArr = str.split('');
-        const arr = [];
-        let j = i;
-
+    for (let i = 0; i < 4; i++) {
         while (j--) {
-            arr.push(strInArr.splice(0, 1).join(''));
+            arr.push(str[0]);
+            str = str.substring(1);
         }
 
-        let excessNums = strInArr.length - (4 - arr.length);
+        let excessNums = str.length - (4 - arr.length);
 
-        if (excessNums === 0 && i === 1) break;
         // to prevent push of the same string to result
+        if (excessNums === 0 && i === 1) break;
 
         let numsInRange = true;
         while (numsInRange) {
             while (excessNums > 0) {
                 if (excessNums <= 3) {
-                    let current = strInArr.splice(0, excessNums + 1).join('');
+                    let current = splitedString
+                        .splice(0, excessNums + 1)
+                        .join('');
                     if (current > 255) {
                         numsInRange = false;
                         break;
                     }
                     arr.push(current);
                 } else if (excessNums > 3) {
-                    let current = strInArr.splice(0, 4).join('');
+                    let current = splitedString.splice(0, 4).join('');
                     if (current > 255) {
                         numsInRange = false;
                         break;
                     }
                     arr.push(current);
                 }
-                excessNums = strInArr.length - (4 - arr.length);
+                excessNums = splitedString.length - (4 - arr.length);
             }
-            if (strInArr.length === 0) break;
-            arr.push(strInArr.splice(0, 1)[0]);
+            if (splitedString.length === 0) break;
+            arr.push(splitedString.splice(0, 1)[0]);
         }
         if (numsInRange) result.push(arr.join('.'));
-        i++;
     }
 
     return result.length ? result : -1;
