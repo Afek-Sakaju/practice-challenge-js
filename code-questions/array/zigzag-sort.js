@@ -15,21 +15,31 @@ Output: arr[] = {1, 4, 2, 3}
 Explanation: The given array is in zig-zag pattern as we can see 1 < 4 > 2 < 3 */
 
 module.exports.zigzagSort = function (arr) {
-    for (let i = 0; i < arr.length; i++) {
-        // relating to the index not placement, for example: arr[0] is even.
-        const isCurrentOdd = i % 2;
-
-        if (isCurrentOdd && arr[i] < arr[i + 1]) {
-            const temp = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = temp;
-        }
-        if (!isCurrentOdd && arr[i] > arr[i + 1]) {
-            const temp = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = temp;
+    for (let i = 1; i < arr.length; i++) {
+        if (i % 2) {
+            if (arr[i - 1] > arr[i]) {
+                const temp = arr[i - 1];
+                arr[i - 1] = arr[i];
+                arr[i] = temp;
+            }
+            if (arr[i + 1] !== undefined && arr[i + 1] > arr[i]) {
+                const temp = arr[i + 1];
+                arr[i + 1] = arr[i];
+                arr[i] = temp;
+            }
+        } else {
+            if (arr[i - 1] < arr[i]) {
+                const temp = arr[i - 1];
+                arr[i - 1] = arr[i];
+                arr[i] = temp;
+            }
+            if (arr[i + 1] !== undefined && arr[i + 1] < arr[i]) {
+                const temp = arr[i + 1];
+                arr[i + 1] = arr[i];
+                arr[i] = temp;
+            }
         }
     }
-    
+
     return arr;
 };
