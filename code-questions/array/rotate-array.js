@@ -1,7 +1,7 @@
-/* Given an unsorted array arr[] of size N. Rotate the array 
-to the left (counter-clockwise direction) by D steps, 
-where D is a positive integer. 
- 
+/* Given an unsorted array arr[] of size N. 
+Rotate the array to the left (counter-clockwise direction) 
+by D steps, where D is a positive integer. 
+
 Example 1:
 
 Input:
@@ -20,7 +20,7 @@ Output: 8 10 12 14 16 18 20 2 4 6
 Explanation: 2 4 6 8 10 12 14 16 18 20 
 when rotated by 3 elements, it becomes 
 8 10 12 14 16 18 20 2 4 6.
- 
+
 Your Task:
 Complete the function rotateArr() which takes the array, D and N as 
 input parameters and rotates the array by D elements. 
@@ -30,9 +30,9 @@ Expected Time Complexity: O(N)
 Expected Auxiliary Space: O(1) */
 
 module.exports.rotateArr = function (arr, D) {
-    if (!arr.length || D <= 0) return;
+    if (!arr?.length || D <= 0) return arr;
 
     D %= arr.length;
 
-    arr.push(...arr.splice(0, D));
+    return [...arr.slice(D), ...arr.slice(0, D)];
 };
