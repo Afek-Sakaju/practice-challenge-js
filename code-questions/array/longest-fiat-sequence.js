@@ -8,28 +8,35 @@ explanation : the longest flat sequence in the array
 is "1, 2, 1, 2, 1" which contains 5 numbers */
 
 module.exports.longestFlatSequence = function (arr) {
-    let num1 = arr[0];
+    let num1 = null;
     let num2 = null;
 
-    let counter = 1;
-    let max = 1;
+    let currentFlatLength = 0;
+    let maxFlatLength = 0;
 
-    for (let i = 1; i < arr.length; i++) {
+    arr?.forEach((currentNumber) => {
         switch (true) {
-            case Math.abs(arr[i] - num1) === 1 && num2 === null:
-                num2 = arr[i];
-                counter++;
+            case num1 === null:
+                num1 = currentNumber;
+                currentFlatLength++;
+                break;
+            case num2 === null && Math.abs(currentNumber - num1) === 1:
+                num2 = currentNumber;
+                currentFlatLength++;
                 break;
             case num2 === null:
-                num1 = arr[i];
-                counter = 1;
+                num1 = currentNumber;
+                currentFlatLength = 1;
                 break;
-            case arr[i] === num1 || arr[i] === num2:
-                counter++;
+            case currentNumber === num1 || currentNumber === num2:
+                currentFlatLength++;
                 break;
         }
-        max = counter > max ? counter : max;
-    }
 
-    return arr.length ? max : 0;
+        if (currentFlatLength > maxFlatLength) {
+            maxFlatLength = currentFlatLength;
+        }
+    });
+
+    return maxFlatLength;
 };
