@@ -1,14 +1,13 @@
 /* Given an array arr of size n and an integer X. 
-Find if there's a triplet in the array which sums 
-up to the given integer X.
+Find if there's a triplet in the array which 
+sums up to the given integer X.
 
 Example 1:
 
 Input:
 n = 6, X = 13
 arr[] = [1 4 45 6 10 8]
-Output:
-1
+Output:1
 Explanation:
 The triplet {1, 4, 8} in 
 the array sums up to 13.
@@ -18,8 +17,7 @@ Example 2:
 Input:
 n = 5, X = 10
 arr[] = [1 2 4 3 6]
-Output:
-1
+Output:1
 Explanation:
 The triplet {1, 3, 6} in 
 the array sums up to 10.
@@ -36,18 +34,17 @@ Expected Time Complexity: O(n2)
 Expected Auxiliary Space: O(1) */
 
 module.exports.find3Numbers = function (arr, x) {
-    arr.sort((a, b) => {
-        if (a < b) return -1;
-        if (a > b) return 1;
-        return 0;
-    });
+    let isTripletExist = false;
+    arr?.sort((a, b) => a - b);
 
-    for (let i = 0, j = 1, k = arr.length - 1; j < k; ) {
+    for (let i = 0, j = 1, k = arr?.length - 1; j < k; ) {
+        if (isTripletExist) break;
+
         let sum = arr[i] + arr[j] + arr[k];
-
         switch (true) {
             case sum === x:
-                return true;
+                isTripletExist = true;
+                break;
             case sum > x:
                 k--;
                 break;
@@ -60,5 +57,5 @@ module.exports.find3Numbers = function (arr, x) {
         }
     }
 
-    return false;
+    return isTripletExist;
 };
