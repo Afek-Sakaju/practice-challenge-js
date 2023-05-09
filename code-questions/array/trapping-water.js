@@ -35,15 +35,25 @@ Expected Time Complexity: O(N)
 Expected Auxiliary Space: O(N) */
 
 module.exports.trappingWater = function (arr) {
-    const height = Math.min(arr[0], arr[arr.length - 1]);
-    const width = arr.length - 2;
+    let trappedWater = 0;
 
-    let middleFullCapacity = 0;
+    let firstLimit = arr?.shift();
+    let prevBlocks = [];
 
-    for (let i = 1; i < arr.length - 1; i++) {
-        middleFullCapacity += arr[i];
-    }
+    arr?.forEach((num, i) => {
+        if (num < firstLimit && i < arr.length - 1) prevBlocks.push(num);
+        else {
+            const minLimit = Math.min(firstLimit, num);
 
-    const res = height * width - middleFullCapacity;
-    return res >= 0 ? res : 0;
+            trappedWater += prevBlocks?.reduce((total, block) => {
+                const blockGap = minLimit - block < 0 ? 0 : minLimit - block;
+                return total + blockGap;
+            }, 0);
+
+            firstLimit = num;
+            prevBlocks = [];
+        }
+    });
+
+    return trappedWater;
 };
