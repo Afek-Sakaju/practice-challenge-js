@@ -46,33 +46,20 @@ module.exports.getMinDiff = function (arr, k) {
     if (arr.length === 0) return;
     arr.sort((a, b) => a - b);
 
-    arr[0] += k;
-    arr[arr.length - 1] =
-        arr[arr.length - 1] > k
-            ? arr[arr.length - 1] - k
-            : arr[arr.length - 1] + k;
+    let min = arr.shift() + k;
+    let max = arr.pop();
+    max = max > k ? max - k : max + k;
 
-    let min = arr[0];
-    let max = arr[arr.length - 1];
+    arr.forEach((num) => {
+        const isBothActionsIncreaseDiff = num - k < min && num + k > max;
+        const subDiffChange = min - num - k;
+        const plusDiffChange = num + k - max;
 
-    for (let i = 1; i < arr.length - 1; i++) {
-        switch (true) {
-            case arr[i] + k <= max:
-                arr[i] += k;
-                break;
-            case arr[i] - k >= min:
-                arr[i] -= k;
-                break;
-            default:
-                if (min - arr[i] - k > arr + k - max) arr[i] -= k;
-                else arr[i] += k;
-                break;
+        if (isBothActionsIncreaseDiff) {
+            if (subDiffChange < plusDiffChange) min = num - k;
+            else max = num + k;
         }
-        min = arr[i] < min ? arr[i] : min;
-        max = arr[i] > max ? arr[i] : max;
-    }
+    });
 
     return max - min;
 };
-
-//todo refactor code
