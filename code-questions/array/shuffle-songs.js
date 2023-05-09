@@ -1,10 +1,10 @@
 /* Q: Write a function that accepts array with string, any
 string represent song, your task is to return array of the songs 
-in randome play order aka: "shuffle" */
+in random play order aka: "shuffle" */
 
 function shuffle(songs) {
     const temp = songs.slice(0);
-    const res = [];
+    const shuffledSongs = [];
 
     function generateRandom(min, max) {
         return ~~(Math.random() * (max + min) + min);
@@ -12,16 +12,17 @@ function shuffle(songs) {
 
     while (temp.length > 0) {
         const randomIndex = generateRandom(0, temp.length);
+        const [randomSong] = temp.splice(randomIndex, 1);
 
-        res.push(temp.splice(randomIndex, 1)[0]);
+        shuffledSongs.push(randomSong);
     }
 
-    return res;
+    return shuffledSongs;
 }
 
 /* The tests are in the function to check manually because 
-the result should be randomise then its more comfortable 
-to see that the results on the function down below : "testShuffle"*/
+the result should be just randomized and not specific predictable value.
+run the test function "testShuffle" */
 
 function testShuffle() {
     const songs = [
@@ -32,10 +33,9 @@ function testShuffle() {
         'venom',
     ];
 
-    for (let i = 0; i < 5; i++) {
-        const result = shuffle(songs);
-
-        console.log(result);
+    // The test will give output of 3 results of the function
+    for (let i = 0; i < 3; i++) {
+        console.log(shuffle(songs));
     }
 }
 
