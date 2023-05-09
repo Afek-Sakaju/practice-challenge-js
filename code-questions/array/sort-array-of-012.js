@@ -1,19 +1,38 @@
-module.exports.sortArr012 = function (arr) {
-    const obj = { 0: 0, 1: 0, 2: 0 };
+module.exports.sortMemo = function (arr) {
+    const numbersCount = { 0: 0, 1: 0, 2: 0 };
 
     for (const num of arr) {
-        if (num !== 0 && num !== 1 && num !== 2) {
-            return;
-        }
-
-        obj[num]++;
+        if (![0, 1, 2].includes(num)) return false;
+        numbersCount[num]++;
     }
 
-    return (
-        '0'.repeat(obj[0]) +
-        '1'.repeat(obj[1]) +
-        '2'.repeat(obj[2])
-    )
-        .split('')
-        .map((e) => (e = +e));
+    const sortedString =
+        '0'.repeat(numbersCount[0]) +
+        '1'.repeat(numbersCount[1]) +
+        '2'.repeat(numbersCount[2]);
+
+    return sortedString.split('').map((e) => (e = +e));
+};
+
+module.exports.sort = function (arr) {
+    let loopLimit = arr.length;
+
+    for (let i = 0; i < loopLimit; i++) {
+        switch (arr[i]) {
+            case 0:
+                arr.unshift(arr.splice(i, 1)[0]);
+                break;
+            case 1:
+                break;
+            case 2:
+                arr.push(arr.splice(i, 1)[0]);
+                loopLimit--;
+                i--;
+                break;
+            default:
+                return false;
+        }
+    }
+
+    return arr;
 };

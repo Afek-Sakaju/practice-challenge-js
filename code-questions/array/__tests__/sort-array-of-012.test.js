@@ -1,35 +1,83 @@
-const { sortArr012 } = require('../sort-array-of-012');
+const { sortMemo, sort } = require('../sort-array-of-012');
 
 describe('sort array of 012 tests', () => {
-    test.each([
-        [[], []],
-        [[0], [0]],
-        [
-            [0, 0, 1, 0],
-            [0, 0, 0, 1],
-        ],
-        [
-            [2, 1, 0, 2, 2, 2],
-            [0, 1, 2, 2, 2, 2],
-        ],
-        [
-            [0, 0, 1, 2, 2, 0, 0, 1],
-            [0, 0, 0, 0, 1, 1, 2, 2],
-        ],
-        [
-            [0, 0, 1, 2, 2, 0, 0, 1],
-            [0, 0, 0, 0, 1, 1, 2, 2],
-        ],
-    ])('function accept arr: %s then return arr:%s', (arr, res) => {
-        expect(sortArr012(arr)).toEqual(res);
+    describe('sortMemo tests', () => {
+        describe('good cases', () => {
+            test.each([
+                [
+                    [0, 0, 1, 2, 2, 0, 0, 1],
+                    [0, 0, 0, 0, 1, 1, 2, 2],
+                ],
+                [
+                    [2, 2, 0, 2, 2, 0],
+                    [0, 0, 2, 2, 2, 2],
+                ],
+                [
+                    [0, 0, 1, 0],
+                    [0, 0, 0, 1],
+                ],
+                [
+                    [0, 1, 2],
+                    [0, 1, 2],
+                ],
+                [[0], [0]],
+                [[], []],
+            ])('function accept arr: %s then return arr:%s', (arr, res) => {
+                expect(sortMemo(arr)).toEqual(res);
+            });
+        });
+        describe('bad cases', () => {
+            test.each([
+                [[0, 0, 1, 'abc', 2, 0, 5, 1]],
+                [[2, 1, 0, '2', 2, 2]],
+                [[0, 1, 2, 3]],
+                [[4, 9]],
+            ])(
+                'function accept invalid arr: %s then returns undefined',
+                (arr) => {
+                    expect(sortMemo(arr)).toBeFalsy();
+                }
+            );
+        });
     });
 
-    test.each([
-        [[0, 0, 1, 9]],
-        [[2, 1, 0, '2', 2, 2]],
-        [[0, 0, 1, 'abc', 2, 0, 5, 1]],
-        [[0, 0, 1, 2, 2, 0, 0, 1, 3]],
-    ])('function accept arr: %s then returns undefined', (arr) => {
-        expect(sortArr012(arr)).toBeFalsy();
+    describe('sort tests', () => {
+        describe('good cases', () => {
+            test.each([
+                [
+                    [0, 0, 1, 2, 2, 0, 0, 1],
+                    [0, 0, 0, 0, 1, 1, 2, 2],
+                ],
+                [
+                    [2, 2, 0, 2, 2, 0],
+                    [0, 0, 2, 2, 2, 2],
+                ],
+                [
+                    [0, 0, 1, 0],
+                    [0, 0, 0, 1],
+                ],
+                [
+                    [0, 1, 2],
+                    [0, 1, 2],
+                ],
+                [[0], [0]],
+                [[], []],
+            ])('function accept arr: %s then return arr:%s', (arr, res) => {
+                expect(sort(arr)).toEqual(res);
+            });
+        });
+        describe('bad cases', () => {
+            test.each([
+                [[0, 0, 1, 'abc', 2, 0, 5, 1]],
+                [[2, 1, 0, '2', 2, 2]],
+                [[0, 1, 2, 3]],
+                [[4, 9]],
+            ])(
+                'function accept invalid arr: %s then returns undefined',
+                (arr) => {
+                    expect(sort(arr)).toBeFalsy();
+                }
+            );
+        });
     });
 });
