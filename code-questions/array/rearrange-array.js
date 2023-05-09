@@ -1,7 +1,6 @@
 /* Given an unsorted array Arr of N positive and negative numbers. 
-Your task is to create an array of alternate positive 
-and negative numbers without changing the relative order 
-of positive and negative numbers.
+Your task is to create an array of alternate positive and negative 
+numbers without changing the relative order of positive and negative numbers.
 Note: Array should start with positive number.
 
 Example 1:
@@ -9,28 +8,31 @@ Example 1:
 Input: 
 N = 9
 Arr[] = {9, 4, -2, -1, 5, 0, -5, -3, 2}
-Output:
-9 -2 4 -1 5 -5 0 -3 2
-Explanation : Positive elements : 9,4,5,0,2
+
+Output: 9 -2 4 -1 5 -5 0 -3 2
+Explanation : 
+Positive elements : 9,4,5,0,2
 Negative elements : -2,-1,-5,-3
 As we need to maintain the relative order of
-postive elements and negative elements we will pick
+positive elements and negative elements we will pick
 each element from the positive and negative and will
 store them. If any of the positive and negative numbers
 are completed. we will continue with the remaining signed
-elements.The output is 9,-2,4,-1,5,-5,0,-3,2.
+elements.
+
 
 Example 2:
 
 Input: 
 N = 10
 Arr[] = {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8}
-Output:
-5 -5 2 -2 4 -8 7 1 8 0 
-Explanation : Positive elements : 5,2,4,7,1,8,0
+
+Output: 5 -5 2 -2 4 -8 7 1 8 0 
+Explanation : 
+Positive elements : 5,2,4,7,1,8,0
 Negative elements : -5,-2,-8
 As we need to maintain the relative order of
-postive elements and negative elements we will pick
+positive elements and negative elements we will pick
 each element from the positive and negative and will
 store them. If any of the positive and negative numbers
 are completed. we will continue with the remaining signed
@@ -46,29 +48,22 @@ Expected Time Complexity: O(N)
 Expected Auxiliary Space: O(N) */
 
 module.exports.rearrange = function (arr) {
-    const positives = []; // note: positives includes - 0
-    const negatives = [];
-    const res = [];
+    const positives = arr.filter((n) => n >= 0); // 0 count as positive
+    const negatives = arr.filter((n) => n < 0);
+    const sorted = [];
 
-    arr.forEach((num) => {
-        if (num >= 0) positives.push(num);
-        else negatives.push(num);
-    });
-
-    while (res.length < arr.length) {
+    while (sorted.length < arr.length) {
         switch (true) {
             case !negatives.length:
-                res.push(...positives);
+                sorted.push(...positives);
                 break;
             case !positives.length:
-                res.push(...negatives);
+                sorted.push(...negatives);
                 break;
             default:
-                res.push(positives.shift(), negatives.shift());
+                sorted.push(positives.shift(), negatives.shift());
         }
     }
 
-    return res;
+    return sorted;
 };
-
-////todo write more tests and refactor code
