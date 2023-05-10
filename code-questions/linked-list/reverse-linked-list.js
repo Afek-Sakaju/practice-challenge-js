@@ -1,3 +1,12 @@
+/* Write a function reverseList() that accept head of a linked-list,
+reverse the linked list and returns its new head (should be previous tail).
+
+Example:
+    Input: 
+        list = 1->2->3->4->5->null
+    Output: 
+        list = 5->4->3->2->1->null */
+
 module.exports.reverseList = function (head) {
     let first = head;
     let middle = head.next;

@@ -1,31 +1,37 @@
-/* Given two strings, represented as linked lists 
-(every character is a node in a linked list). 
+/* Given two strings, represented as linked lists (every character is a node in a linked list). 
 Write a function compare() that works similar to strcmp(),
 it should returns 0 if both strings are the same,
 1 if the first linked list is lexicographically greater,
 and -1 if the second string is lexicographically greater.
 
-Examples:
-Input: 
-  list1 = a->b->z
-  list2 = a->b->c
-Output: 1
-Explanation: "abz" is lexicographically greater than "abc".
+Example 1:
+    Input:
+        list1 = a->b->z
+        list2 = a->b->c
+    Output:       
+        1
+    Explanation: 
+        "abz" is lexicographically greater than "abc".
 
-Input: 
-  list1 = z->a->a
-  list2 = z->a->z
-Output: -1
-Explanation: "zaz" is greater than "zaa".
+Example 2:
+    Input: 
+        list1 = z->a->a
+        list2 = z->a->z
+    Output: 
+        -1
+    Explanation: 
+        "zaz" is greater than "zaa".
 
-Input:
-  list1 = a->b->c
-  list2 = a->b->c
-Output: 0
-Explanation: Both the strings are "geeks".
+Example 3:
+    Input:
+        list1 = a->b->c
+        list2 = a->b->c
+    Output: 
+        0
+    Explanation: 
+        Both the strings are "geeks".
 
-
-Time Complexity: O(N + M) where N and M are the lengths of the linked lists.
+Time Complexity: O(N + M)
 Auxiliary Space: O(N + M) */
 
 module.exports.compare = function (head1, head2) {
