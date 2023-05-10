@@ -1,3 +1,6 @@
+/* Write a function that accepts number and
+return the calculation of his factorial */
+
 module.exports.factorialIterative = function (num) {
     if (num <= 0) return 0;
 
