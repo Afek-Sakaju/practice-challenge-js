@@ -1,33 +1,27 @@
-/* Q: Write a function that accept 3 params: 
-object, path(string), val(string).
-The function should modify the value from the 
-object using the provided path, if the path inside 
-is undefined, create it and insert in it the val
-For example: 
+/* Write a function that accepts object, path(string), val(string),
+and modify the value in the object using the provided path, 
+if the value of the path is undefined, create it and insert the val in it.
 
-const obj = {a:{c:8}};
+Example: 
+    Input:
+        obj = {a: {c: 8}}  
+        path = "a.c"
+        val = 1
+    Output:
+        obj = {a: {c: 1}}
+    Explanation:
+        The value inside the path a -> c was 8, after the change to val its 1 */
 
-input:  
-    setLodash(obj ,'a.c' , 1)
-result: 
-    obj modified to - {a:{c:1}} */
-
-module.exports.setLodash = function (initialObj, path, val) {
-    if (!initialObj) initialObj = {};
-
-    let obj = initialObj;
+module.exports.setLodash = function (initialObject, path, val) {
+    let currentObject = initialObject;
 
     const keys = path?.split('.') ?? [];
-
     for (const key of keys.slice(0, -1)) {
-        if (obj[key] === undefined) {
-            obj[key] = {};
-        }
-        obj = obj[key];
+        if (currentObject[key] === undefined) currentObject[key] = {};
+        currentObject = currentObject[key];
     }
 
     const lastPath = keys[keys.length - 1];
-    obj[lastPath] = val;
-
-    return initialObj;
+    currentObject[lastPath] = val;
+    return initialObject;
 };

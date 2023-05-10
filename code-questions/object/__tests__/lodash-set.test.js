@@ -3,21 +3,14 @@ const { setLodash } = require('../lodash-set');
 describe('set-lodash tests', () => {
     test.each([
         [{ a: { c: 1 } }, 'a.c', '9', { a: { c: '9' } }],
-        [{ a: { b: [1, 2, 3] } }, 'a.b', [0, 0, 0], { a: { b: [0, 0, 0] } }],
         [
-            { user: { food: 'steak' } },
-            'user.food',
-            'butter',
-            { user: { food: 'butter' } },
-        ],
-        [
-            { user: { pc: 'desk-pc' } },
-            'user.pc',
+            { user: { name: "afek's pc" } },
+            'user.type',
             'gaming',
-            { user: { pc: 'gaming' } },
+            { user: { name: "afek's pc", type: 'gaming' } },
         ],
-        [{}, 'a', 'NoMeaning', { a: 'NoMeaning' }],
         [{}, 'a.b.c', 700, { a: { b: { c: 700 } } }],
+        [{}, '', 'NoMeaning', { '': 'NoMeaning' }],
     ])(
         'function accept obj: %s, path: %s, val: %s, then return: %s',
         (obj, path, val, res) => {
