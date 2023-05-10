@@ -2,6 +2,9 @@ const { maxSubarraySum } = require('../max-subarray-sum');
 
 describe('max-subarray-sum tests', () => {
     test.each([
+        [[], undefined],
+        [[1], 1],
+        [[1, 2], 3],
         [[1, 2, 3, -2, 5], 9],
         [[-1, -2, -3, -4], -1],
         [[7, 9, -99, 1, 100], 101],
