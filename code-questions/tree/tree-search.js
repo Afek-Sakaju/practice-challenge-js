@@ -1,7 +1,7 @@
-/* Write a function that accepts tree's 
-root and a value, and return true if this 
-value exists on one of the tree node's value 
-otherwise return false 
+/* Write a function that accepts tree root and a value, 
+and returns true if this value exists on one as the tree node's value,
+otherwise return false .
+
 Bonus: Write the same function with O(logN) time complexity
 using binary tree search */
 

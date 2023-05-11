@@ -16,7 +16,7 @@ describe('identicalTreeCheck tests', () => {
             new Node(3, new Node(6), new Node(7))
         );
 
-        /*          Tree 1:
+        /* Tree 1:
              1
             /  \
            /    \
@@ -32,7 +32,7 @@ describe('identicalTreeCheck tests', () => {
             new Node(3, new Node(6), new Node(7))
         );
 
-        /*          Tree 2:
+        /* Tree 2:
              1
             /  \
            /    \
@@ -52,7 +52,7 @@ describe('identicalTreeCheck tests', () => {
             new Node(3, new Node(6), new Node(7))
         );
 
-        /*          Tree 1:
+        /* Tree 1:
              1
             /  \
            /    \
@@ -68,7 +68,7 @@ describe('identicalTreeCheck tests', () => {
             new Node(5, new Node(2), new Node(2))
         );
 
-        /*          Tree 2:
+        /* Tree 2:
              9
             /  \
            /    \
@@ -88,7 +88,7 @@ describe('identicalTreeCheck tests', () => {
             new Node(3, new Node(6), new Node(7))
         );
 
-        /*          Tree 1:
+        /* Tree 1:
              1
             /  \
            /    \
@@ -104,7 +104,7 @@ describe('identicalTreeCheck tests', () => {
             new Node(3, new Node(6))
         );
 
-        /*          Tree 2:
+        /* Tree 2:
              1
             /  \
            /    \
@@ -124,7 +124,7 @@ describe('identicalTreeCheck tests', () => {
             new Node(3, new Node(6), new Node(7))
         );
 
-        /*          Tree 1:
+        /* Tree 1:
              1
             /  \
            /    \
@@ -140,7 +140,7 @@ describe('identicalTreeCheck tests', () => {
             new Node(5, new Node(2))
         );
 
-        /*          Tree 2:
+        /* Tree 2:
              9
             /  \
            /    \

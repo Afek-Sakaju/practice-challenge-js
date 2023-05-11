@@ -3,8 +3,7 @@ and return string of all his left son's values
 (including the root & including the left son's of right son's)  
 
 Example: 
-
-input: root of the tree below
+    Input: root of the tree below
                4
               /  \
              /    \
@@ -15,8 +14,11 @@ input: root of the tree below
                  3     1
                 / \     
                6   7     
-
-output: '4536' */
+    Output: 
+        '4536' 
+    Explanation:
+        All the left sons of the tree are: 4, 5, 3 ,6
+        (including the root) */
 
 const printLeftView = (module.exports.printLeftView = function (
     node,
