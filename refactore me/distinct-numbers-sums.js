@@ -45,4 +45,4 @@ module.exports.distinictSum = function (arr) {
     }
 };
 
-//the solution needs to be memoized and recoursive
+//the solution needs to be memoized and recursive

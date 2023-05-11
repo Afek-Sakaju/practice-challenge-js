@@ -8,7 +8,7 @@ class Node {
     }
 }
 
-describe('tree recoursive searches testing', () => {
+describe('tree recursive searches testing', () => {
     describe('treeSearch tests', () => {
         test('search to value that exists in the tree returns true', () => {
             /*

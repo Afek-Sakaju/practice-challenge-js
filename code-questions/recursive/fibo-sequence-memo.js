@@ -1,7 +1,7 @@
-/* Write a function that accepts number and return his value
-on the fibonacci series 
+/* Write a function that accepts place(number) and return 
+its value his value based on the place on the  fibonacci series.
 Bonus: the solution should be memoized to prevent 
-too much recoursive calls*/
+too much recursive calls*/
 
 module.exports.memoFibonacci = function (num) {
     const obj = { 1: 1, 2: 1 };
