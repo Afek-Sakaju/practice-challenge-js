@@ -1,6 +1,6 @@
-const { shuffle } = require('../shuffle-name');
+const { swap } = require('../swap-name');
 
-describe('shuffle-name tests', () => {
+describe('swap-name tests', () => {
     describe('good cases', () => {
         test.each([
             ['hello friends', 'friends hello'],
@@ -9,7 +9,7 @@ describe('shuffle-name tests', () => {
         ])(
             'function accepts full name: %s ,then return: %s',
             (fullName, res) => {
-                expect(shuffle(fullName)).toBe(res);
+                expect(swap(fullName)).toBe(res);
             }
         );
     });
@@ -22,7 +22,7 @@ describe('shuffle-name tests', () => {
         ])(
             'function accepts invalid string: %s ,then return: %s',
             (fullName, res) => {
-                expect(shuffle(fullName)).toBe(res);
+                expect(swap(fullName)).toBe(res);
             }
         );
     });
