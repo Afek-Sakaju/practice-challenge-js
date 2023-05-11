@@ -1,61 +1,74 @@
 /* Given a string 's'. The task is to find the smallest window length 
 that contains all the characters of the given string at least one time.
-For eg. A = aabcbcdbca, then the result would be 4 
-as of the smallest window will be dbca.
 
 Example 1:
-Input : "AABBBCBBAC"
-Output : 3
-Explanation : Sub-string -> "BAC"
+    Input: 
+        "AABBBCBBAC"
+    Output: 
+        3
+    Explanation: 
+        Sub-string -> "BAC"
 
 Example 2:
-Input : "aaab"
-Output : 2
-Explanation : Sub-string -> "ab"
- 
+    Input: 
+        "aaab"
+    Output: 
+        2
+    Explanation: 
+        Sub-string -> "ab"
+
 Example 3:
-Input : "GEEKSGEEKSFOR"
-Output : 8
-Explanation : Sub-string -> "GEEKSFOR"
+    Input: 
+        "GEEKSGEEKSFOR"
+    Output: 
+        8
+    Explanation: 
+        Sub-string -> "GEEKSFOR"
 
 Your Task:  
-You don't need to read input or print anything. 
-Your task is to complete the function findSubString() 
-which takes the string S as input and returns 
-the length of the smallest such window of the string.
+    You don't need to read input or print anything. 
+    Your task is to complete the function findSubString() 
+    which takes the string S as input and returns 
+    the length of the smallest such window of the string.
 
 Expected Time Complexity: O(256.N)
 Expected Auxiliary Space: O(256) */
 
-//todo refactor me
 module.exports.findSubString = function (str) {
-    const arr = str.split('');
-    let obj = {};
-    const res = [];
-
-    for (const char of arr) {
-        if (!obj.hasOwnProperty(char)) obj[char] = true;
-    }
-    const initialObj = obj;
-
-    let distinctFound = 0;
-    let strLength = 0;
-    for (let i = 0; i < arr.length; i++) {
-        let current = arr[i];
-        let next = arr[i + 1];
-
-        if (obj[current] === true && current !== next) {
-            obj[current] = false;
-            distinctFound++;
-            strLength++;
+    function initDistinctCharsData(string) {
+        const distinctList = {};
+        for (const char of string) {
+            distinctList[char] = false;
         }
+        const distinctListLength = Object.values(distinctList).length;
 
-        if (distinctFound === Object.entries(obj).length) {
-            res.push(strLength);
-            obj = initialObj;
-            strLength = 0;
-            distinctFound = 0;
+        return { distinctList, distinctListLength };
+    }
+
+    function resetFoundDistinctData() {
+        distinctFoundObject = JSON.parse(JSON.stringify(distinctList));
+        distinctFoundCount = 0;
+        currentSubStringLength = 0;
+    }
+
+    const subStringsFound = [];
+    const { distinctList, distinctListLength } = initDistinctCharsData(str);
+    let distinctFoundObject;
+    let distinctFoundCount;
+    let currentSubStringLength;
+    resetFoundDistinctData();
+
+    for (let i = 0; i < str.length; i++) {
+        if (distinctFoundObject[char] === false) {
+            distinctFoundCount++;
+            distinctFoundObject[char] = true;
+        }
+        currentSubStringLength++;
+
+        if (distinctListLength === distinctFoundCount) {
+            subStringsFound.push(currentSubStringLength);
+            resetFoundDistinctData();
         }
     }
-    return Math.max(...res);
+    return Math.min(...subStringsFound);
 };

@@ -2,10 +2,15 @@
 the longest flat sequence inside the array.
 flat-sequence have to contain two numbers in 
 descending or ascending order by only 1 count.
-input : [3, 3, 7, 9, 1, 2, 1, 2, 1]
-output : 5
-explanation : the longest flat sequence in the array
-is "1, 2, 1, 2, 1" which contains 5 numbers 
+
+Example:
+    Input: 
+        [3, 3, 7, 9, 1, 2, 1, 2, 1]
+    Output: 
+        5
+    Explanation:
+        The longest flat sequence in the array
+        is "1, 2, 1, 2, 1" which contains 5 numbers .
 
 Example:
     Input:
@@ -14,7 +19,7 @@ Example:
         5
     Explanation: 
         The longest flat sequence in the array is 
-        "1, 2, 1, 2, 1" which contains 5 numbers */
+        "1, 2, 1, 2, 1" which contains 5 numbers. */
 
 module.exports.longestFlatSequence = function (arr) {
     let num1 = null;
