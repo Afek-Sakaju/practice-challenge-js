@@ -1,3 +1,3 @@
-# Just-Like-Me-
+# Practice-Challenge-JS
 
 add info
