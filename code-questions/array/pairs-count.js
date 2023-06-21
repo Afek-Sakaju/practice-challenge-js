@@ -33,7 +33,7 @@ module.exports.getPairsCount = function (arr, k) {
     let pairsCount = 0;
 
     const obj = arr.reduce(
-        (acc, n) => ({ ...acc, ...{ [n]: (acc[n] || 0) + 1 } }),
+        (acc, n) => ({ ...acc, [n]: (acc[n] ?? 0) + 1 }),
         {}
     );
 
