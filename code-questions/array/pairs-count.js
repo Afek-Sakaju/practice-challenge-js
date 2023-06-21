@@ -32,19 +32,19 @@ Expected Auxiliary Space: O(N) */
 module.exports.getPairsCount = function (arr, k) {
     let pairsCount = 0;
 
-    const obj = arr.reduce(
+    const obj = arr?.reduce(
         (acc, n) => ({ ...acc, [n]: (acc[n] ?? 0) + 1 }),
         {}
     );
 
     for (const num of arr) {
         if (k - num === num) {
-            if (obj[k - num] > 1) {
+            if (obj?.[k - num] > 1) {
                 pairsCount += obj[k - num] - 1;
                 obj[num]--;
             }
         } else {
-            if (obj[k - num] > 0) {
+            if (obj?.[k - num] > 0) {
                 pairsCount += obj[k - num];
                 obj[num]--;
             }
