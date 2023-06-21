@@ -39,10 +39,10 @@ module.exports.getPairsCount = function (arr, k) {
     });
 
     arr.forEach((num) => {
-    if (k - num === num) {
+        if (k - num === num) {
             if (obj[k - num] > 1) {
-                pairsCount += obj[k - num];
-                obj[num] --;
+                pairsCount += obj[k - num] - 1;
+                obj[num]--;
             }
         } else {
             if (obj[k - num] > 0) {
@@ -51,6 +51,6 @@ module.exports.getPairsCount = function (arr, k) {
             }
         }
     });
-
+    
     return pairsCount;
 };
