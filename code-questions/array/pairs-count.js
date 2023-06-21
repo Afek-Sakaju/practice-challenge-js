@@ -29,7 +29,28 @@ Your Task:
 Expected Time Complexity: O(N)
 Expected Auxiliary Space: O(N) */
 
+module.exports.getPairsCount = function (arr, k) {
+    const obj = {};
+    let pairsCount = 0;
 
-module.exports.getPairsCount = function (arr,k) {
-    
-}
+    arr.forEach((num) => {
+        obj[num] ||= 0;
+        obj[num]++;
+    });
+
+    arr.forEach((num) => {
+    if (k - num === num) {
+            if (obj[k - num] > 1) {
+                pairsCount += obj[k - num];
+                obj[num] --;
+            }
+        } else {
+            if (obj[k - num] > 0) {
+                pairsCount += obj[k - num];
+                obj[num]--;
+            }
+        }
+    });
+
+    return pairsCount;
+};
