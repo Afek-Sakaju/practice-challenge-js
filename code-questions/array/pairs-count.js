@@ -30,13 +30,12 @@ Expected Time Complexity: O(N)
 Expected Auxiliary Space: O(N) */
 
 module.exports.getPairsCount = function (arr, k) {
-    const obj = {};
     let pairsCount = 0;
 
-    for (const num of arr) {
-        obj[num] ||= 0;
-        obj[num]++;
-    }
+    const obj = arr.reduce(
+        (acc, n) => ({ ...acc, ...{ [n]: (acc[n] || 0) + 1 } }),
+        {}
+    );
 
     for (const num of arr) {
         if (k - num === num) {
