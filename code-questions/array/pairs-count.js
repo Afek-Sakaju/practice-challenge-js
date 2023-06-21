@@ -38,12 +38,13 @@ module.exports.getPairsCount = function (arr, k) {
     );
 
     for (const num of arr) {
-        if (obj[k - num] > 0) {
-            pairsCount += obj[k - num];
-            obj[num]--;
+        if (!obj[k - num]) continue;
 
-            if (k - num === num) obj[num]--;
-        }
+        // Because one of the possible number to pair for K is the current number itself
+        if (num === k - num) pairsCount += obj[num] - 1;
+        else pairsCount += obj[k - num];
+
+        obj[num]--;
     }
 
     return pairsCount;
