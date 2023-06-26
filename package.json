@@ -13,12 +13,14 @@
     "private": true,
     "scripts": {
         "jest-init": "jest --init",
-        "test": "jest"
+        "test": "jest",
+        "lint": "eslint ."
     },
     "license": "ISC",
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",
         "@types/passport-local": "^1.0.34",
+        "eslint": "^8.43.0",
         "jest": "^27.5.1",
         "jest-html-reporters": "^3.0.5",
         "prettier": "^2.7.1"
