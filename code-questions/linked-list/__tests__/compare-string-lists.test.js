@@ -1,4 +1,4 @@
-const { compare, compareRec } = require('../compare-string-lists');
+const { compare } = require('../compare-string-lists');
 
 class Node {
     constructor(value, next = null) {

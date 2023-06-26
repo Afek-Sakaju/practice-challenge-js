@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const str1 = 'afek';
 
 // char at index 2 is: 'e'

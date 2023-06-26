@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const arr1 = [1, 2, 3, 4, 5];
 const arr2 = [1, [7, 7, 7], [1, [7, [7, [7]]]]];
 const arr3 = [5, 5, 5, 8, 8];
