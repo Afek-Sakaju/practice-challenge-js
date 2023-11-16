@@ -8,18 +8,19 @@ Example:
         list = 5->4->3->2->1->null */
 
 module.exports.reverseList = function (head) {
-    let first = head;
-    let middle = head.next;
-    let last = null;
+    let prev = head;
+    let current = head.next;
+    let next = null;
 
-    while (middle) {
-        last = middle.next;
-        middle.next = first;
-        first = middle;
-        middle = last;
+    while (current) {
+        next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
     }
 
-    head.next = middle; // must be null since its out of the loop
-    head = first;
+    // The value of current will be null because the loop has been finished
+    head.next = current;
+    head = prev;
     return head;
 };
