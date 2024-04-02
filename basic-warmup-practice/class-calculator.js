@@ -1,31 +1,38 @@
-function areNumbersValid(...numbers) {
-    return numbers.every((num) => typeof num === 'number');
-}
-
 class Calculator {
-    static minus(num1, num2) {
-        if (!areNumbersValid(num1, num2)) return;
-        return num1 - num2;
-    }
-
-    static plus(num1, num2) {
-        if (!areNumbersValid(num1, num2)) return;
+    static add(num1, num2) {
         return num1 + num2;
     }
 
-    static double(num1, num2) {
-        if (!areNumbersValid(num1, num2)) return;
+    static sub(num1, num2) {
+        return num1 - num2;
+    }
+
+    static multiply(num1, num2) {
         return num1 * num2;
     }
 
     static divide(num1, num2) {
-        if (!areNumbersValid(num1, num2)) return;
         return num1 / num2;
     }
 }
 
-console.log(Calculator.plus(10, 8));
+class CalculatorAdvanced extends Calculator {
+    static power(num1, num2) {
+        return Math.pow(num1, num2);
+    }
+}
 
-console.log(Calculator.divide(10));
+const twoPlusFour = Calculator.add(2, 4);
+console.log(`2 + 4: ${twoPlusFour}`);
 
-console.log(Calculator.minus('10', 8));
+const twoMinusFour = Calculator.sub(2, 4);
+console.log(`2 - 4: ${twoMinusFour}`);
+
+const twoFourTimes = Calculator.multiply(2, 4);
+console.log(`2 * 4: ${twoFourTimes}`);
+
+const twoDividedByFour = Calculator.divide(2, 4);
+console.log(`2 / 4: ${twoDividedByFour}`);
+
+const twoPoweredByFour = CalculatorAdvanced.power(2, 4);
+console.log(`2 ^ 4: ${twoPoweredByFour}`);
